@@ -125,6 +125,7 @@ function configs.__newindex(t, config_name, config_def)
       })
 
       add_callbacks(new_config)
+      new_config.root_dir = _root_dir
       if config_def.on_new_config then
         pcall(config_def.on_new_config, new_config, _root_dir)
       end
@@ -162,7 +163,6 @@ function configs.__newindex(t, config_name, config_def)
         end
       end)
 
-      new_config.root_dir = _root_dir
       return new_config
     end
 
