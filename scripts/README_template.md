@@ -176,6 +176,11 @@ lspconfig.SERVER.setup{config}
   The `config` parameter has the same shape as that of
   |vim.lsp.start_client()|, with these additions and changes:
 
+  {cmd}
+    Required for all servers.
+    Table containing the server daemon executable name as the first element and
+    optional additional commandline arguments as subsequent elements.
+
   {root_dir}
     Required for some servers, optional for others.
     Function of the form `function(filename, bufnr)`.
@@ -237,6 +242,19 @@ lspconfig.SERVER.setup{config}
     created as a result of {root_dir} returning a unique value. You can use this
     as an opportunity to further modify the new_config or use it before it is
     sent to |vim.lsp.start_client()|.
+
+    Example:
+    When running a [clangd](#clangd) language server, an implementation of this
+    function can be useful to provide the location of the
+    `compile_commands.json` using the `--compile-commands-dir` argument.
+
+    on_new_config = function(new_config)
+        local root_dir = new_config.root_dir(vim.api.nvim_buf_get_name(0),
+                                             vim.api.nvim_get_current_buf())
+        local build_path = string.gsub(root_dir, 'src', 'build')
+        local args = {('--compile-commands-dir=%s'):format(build_path)}
+        vim.list_extend(new_config.cmd, args)
+    end;
 ```
 
 # Configurations
