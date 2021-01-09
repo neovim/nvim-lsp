@@ -5,7 +5,7 @@ configs.fortls = {
   default_config = {
     cmd = {"fortls"};
     filetypes = {"fortran"};
-    root_dir = util.root_pattern(".fortls");
+    root_dir = util.breadth_first_root_pattern(".fortls");
     settings = {
       nthreads = 1,
     };
@@ -18,7 +18,7 @@ https://github.com/hansec/fortran-language-server
 Fortran Language Server for the Language Server Protocol
     ]];
     default_config = {
-      root_dir = [[root_pattern(".fortls")]];
+      root_dir = [[breadth_first_root_pattern(".fortls")]];
     };
   };
 };

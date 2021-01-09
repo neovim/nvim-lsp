@@ -10,7 +10,7 @@ configs[name] = {
       "java", "-jar", bin_name
     },
     filetypes = {"groovy"};
-    root_dir = util.root_pattern(".git") or vim.loop.os_homedir();
+    root_dir = util.breadth_first_root_pattern(".git") or vim.loop.os_homedir();
   };
   docs = {
     description = [[
@@ -37,7 +37,7 @@ require'lspconfig'.groovyls.setup{
         "java", "-jar", bin_name
       },
       filetypes = {"groovy"};
-      root_dir = [[root_pattern(".git") or vim.loop.os_homedir()]];
+      root_dir = [[breadth_first_root_pattern(".git") or vim.loop.os_homedir()]];
     };
   };
 }

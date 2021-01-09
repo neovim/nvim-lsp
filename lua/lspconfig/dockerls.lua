@@ -8,7 +8,7 @@ configs[server_name] = {
   default_config = {
     cmd = {bin_name, "--stdio"};
     filetypes = {"Dockerfile", "dockerfile"};
-    root_dir = util.root_pattern("Dockerfile");
+    root_dir = util.breadth_first_root_pattern("Dockerfile");
   };
   docs = {
     description = [[
@@ -20,7 +20,7 @@ npm install -g dockerfile-language-server-nodejs
 ```
     ]];
     default_config = {
-      root_dir = [[root_pattern("Dockerfile")]];
+      root_dir = [[breadth_first_root_pattern("Dockerfile")]];
     };
   };
 };

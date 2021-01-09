@@ -5,7 +5,7 @@ configs.dhall_lsp_server ={
   default_config = {
     cmd = {"dhall-lsp-server"};
     filetypes = {"dhall"};
-    root_dir = util.root_pattern(".git", vim.fn.getcwd());
+    root_dir = util.breadth_first_root_pattern(".git", vim.fn.getcwd());
     docs = {
       description = [[
 https://github.com/dhall-lang/dhall-haskell/tree/master/dhall-lsp-server
@@ -19,7 +19,7 @@ cabal install dhall-lsp-server
 prebuilt binaries can be found [here](https://github.com/dhall-lang/dhall-haskell/releases).
 ]];
       default_config = {
-        root_dir = [[root_pattern(".git", vim.fn.getcwd())]];
+        root_dir = [[breadth_first_root_pattern(".git", vim.fn.getcwd())]];
       };
     }
   }

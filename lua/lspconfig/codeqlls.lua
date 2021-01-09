@@ -3,7 +3,7 @@ local util = require 'lspconfig/util'
 
 local server_name = "codeqlls"
 
-local root_pattern = util.root_pattern("qlpack.yml")
+local root_pattern = util.breadth_first_root_pattern("qlpack.yml")
 
 configs[server_name] = {
     default_config = {

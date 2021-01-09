@@ -5,7 +5,7 @@ configs.hie = {
   default_config = {
     cmd = {"hie-wrapper", "--lsp"};
     filetypes = {"haskell"};
-    root_dir = util.root_pattern("stack.yaml", "package.yaml", ".git");
+    root_dir = util.breadth_first_root_pattern("stack.yaml", "package.yaml", ".git");
   };
 
   docs = {
@@ -30,7 +30,7 @@ init_options = {
         ]];
 
     default_config = {
-      root_dir = [[root_pattern("stack.yaml", "package.yaml", ".git")]];
+      root_dir = [[breadth_first_root_pattern("stack.yaml", "package.yaml", ".git")]];
     };
   };
 };

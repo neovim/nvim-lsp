@@ -4,7 +4,7 @@ local util = require 'lspconfig/util'
 local server_name = "cssls"
 local bin_name = "css-languageserver"
 
-local root_pattern = util.root_pattern("package.json")
+local root_pattern = util.breadth_first_root_pattern("package.json")
 
 configs[server_name] = {
   default_config = {
@@ -29,7 +29,7 @@ npm install -g vscode-css-languageserver-bin
 ```
 ]];
     default_config = {
-      root_dir = [[root_pattern("package.json")]];
+      root_dir = [[breadth_first_root_pattern("package.json")]];
     };
   };
 }

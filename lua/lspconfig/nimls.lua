@@ -19,7 +19,7 @@ nimble install nimlsp
 ```
     ]];
     default_config = {
-      root_dir = [[root_pattern(".git") or os_homedir]];
+      root_dir = [[breadth_first_root_pattern(".git") or os_homedir]];
     };
   };
 }

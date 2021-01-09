@@ -283,47 +283,73 @@ function M.server_per_root_dir_manager(_make_config)
   return manager
 end
 
-function M.search_ancestors(startpath, func)
+
+function M.search_ancestors_breadth_first(startpath, patterns, func)
   validate { func = {func, 'f'} }
-  if func(startpath) then return startpath end
+  if func(startpath, patterns) then return startpath end
   for path in M.path.iterate_parents(startpath) do
-    if func(path) then return path end
+    for _, pattern in ipairs(patterns) do
+      if func(path, pattern) then return path end
+    end
   end
 end
 
-function M.root_pattern(...)
-  local patterns = vim.tbl_flatten {...}
-  local function matcher(path)
+function M.search_ancestors_depth_first(startpath, patterns, func)
+  validate { func = {func, 'f'} }
+  if func(startpath, patterns) then return startpath end
+  for _, pattern in ipairs(patterns) do
+    for path in M.path.iterate_parents(startpath) do
+      if func(path, pattern) then return path end
+    end
+  end
+end
+
+-- Iteratively searches for each pattern at a given level of the filesystem
+-- hierarchy, before checking the parent directory
+function M.breadth_first_root_pattern(...)
+  local function matcher(path, patterns)
     for _, pattern in ipairs(patterns) do
       if M.path.exists(vim.fn.glob(M.path.join(path, pattern))) then
         return path
       end
     end
   end
+  local patterns = vim.tbl_flatten {...}
   return function(startpath)
-    return M.search_ancestors(startpath, matcher)
+    return M.search_ancestors_breadth_first(startpath, patterns, matcher)
   end
 end
+
+-- Iteratively searches up the filesystem hierarchy for each pattern
+-- sequentially
+function M.depth_first_root_pattern(...)
+  local function matcher(path, pattern)
+    if M.path.exists(vim.fn.glob(M.path.join(path, pattern))) then
+      return path
+    end
+  end
+  local patterns = vim.tbl_flatten {...}
+  return function(startpath)
+    return M.search_ancestors_depth_first(startpath, patterns, matcher)
+  end
+end
+
+local function matcher (path, pattern)
+  if M.path.is_dir(M.path.join(path, pattern)) then
+    return path
+  end
+end
+
 function M.find_git_ancestor(startpath)
-  return M.search_ancestors(startpath, function(path)
-    if M.path.is_dir(M.path.join(path, ".git")) then
-      return path
-    end
-  end)
+  return M.search_ancestors_depth_first(startpath, {".git"}, matcher)
 end
+
 function M.find_node_modules_ancestor(startpath)
-  return M.search_ancestors(startpath, function(path)
-    if M.path.is_dir(M.path.join(path, "node_modules")) then
-      return path
-    end
-  end)
+  return M.search_ancestors_depth_first(startpath, {"node_modules"}, matcher)
 end
+
 function M.find_package_json_ancestor(startpath)
-  return M.search_ancestors(startpath, function(path)
-    if M.path.is_file(M.path.join(path, "package.json")) then
-      return path
-    end
-  end)
+  return M.search_ancestors_depth_first(startpath, {"package.json"}, matcher)
 end
 
 function M.utf8_config(config)

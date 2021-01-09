@@ -8,7 +8,7 @@ configs[server_name] = {
   default_config = {
     cmd = {bin_name, "tc", "--lsp"};
     filetypes = {"ruby"};
-    root_dir = util.root_pattern("Gemfile", ".git");
+    root_dir = util.breadth_first_root_pattern("Gemfile", ".git");
   };
   docs = {
     description = [[
@@ -24,7 +24,7 @@ gem install sorbet
 ```
     ]];
     default_config = {
-      root_dir = [[root_pattern("Gemfile", ".git")]];
+      root_dir = [[breadth_first_root_pattern("Gemfile", ".git")]];
     };
   };
 };

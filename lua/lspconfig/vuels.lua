@@ -8,7 +8,7 @@ configs[server_name] = {
   default_config = {
     cmd = {bin_name};
     filetypes = {"vue"};
-    root_dir = util.root_pattern("package.json", "vue.config.js");
+    root_dir = util.breadth_first_root_pattern("package.json", "vue.config.js");
     init_options = {
       config = {
         vetur = {
@@ -60,7 +60,7 @@ npm install -g vls
 ```
 ]];
     default_config = {
-      root_dir = [[root_pattern("package.json", "vue.config.js")]];
+      root_dir = [[breadth_first_root_pattern("package.json", "vue.config.js")]];
       init_options = {
         config = {
           vetur = {

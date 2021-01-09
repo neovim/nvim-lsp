@@ -8,7 +8,7 @@ local bin_name = "elm-language-server"
 
 local default_capabilities = lsp.protocol.make_client_capabilities()
 default_capabilities.offsetEncoding = {"utf-8", "utf-16"}
-local elm_root_pattern = util.root_pattern("elm.json")
+local elm_breadth_first_root_pattern = util.root_pattern("elm.json")
 
 configs[server_name] = {
   default_config = {
@@ -18,7 +18,7 @@ configs[server_name] = {
     root_dir = function(fname)
       local filetype = api.nvim_buf_get_option(0, 'filetype')
       if filetype == 'elm' or (filetype == 'json' and fname:match("elm%.json$")) then
-        return elm_root_pattern(fname)
+        return elm_breadth_first_root_pattern(fname)
       end
     end;
     init_options = {
@@ -39,7 +39,7 @@ npm install -g elm elm-test elm-format @elm-tooling/elm-language-server
 ```
 ]];
     default_config = {
-      root_dir = [[root_pattern("elm.json")]];
+      root_dir = [[breadth_first_root_pattern("elm.json")]];
     };
   };
 }

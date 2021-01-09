@@ -5,7 +5,7 @@ local server_name = 'omnisharp'
 configs[server_name] = {
   default_config = {
     filetypes = {"cs", "vb"};
-    root_dir = util.root_pattern("*.csproj", "*.sln");
+    root_dir = util.breadth_first_root_pattern("*.csproj", "*.sln");
     init_options = {
     };
   };
@@ -33,7 +33,7 @@ require'lspconfig'.omnisharp.setup{
 ```
 ]];
     default_config = {
-      root_dir = [[root_pattern(".csproj", ".sln")]];
+      root_dir = [[breadth_first_root_pattern(".csproj", ".sln")]];
     };
   };
 }

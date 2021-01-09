@@ -8,7 +8,7 @@ configs[server_name] = {
   default_config = {
     cmd = { bin_name, "--stdio" };
     filetypes = { "ocaml", "reason" };
-    root_dir = util.root_pattern(".merlin", "package.json");
+    root_dir = util.breadth_first_root_pattern(".merlin", "package.json");
   };
   docs = {
     description = [[
@@ -20,7 +20,7 @@ npm install -g ocaml-langauge-server
 ```
     ]];
     default_config = {
-      root_dir = [[root_pattern(".merlin", "package.json")]];
+      root_dir = [[breadth_first_root_pattern(".merlin", "package.json")]];
     };
   };
 };

@@ -5,7 +5,7 @@ configs.hls = {
   default_config = {
     cmd = {"haskell-language-server-wrapper", "--lsp"};
     filetypes = {"haskell", "lhaskell"};
-    root_dir = util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml");
+    root_dir = util.breadth_first_root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml");
   };
 
   docs = {
@@ -16,7 +16,7 @@ Haskell Language Server
         ]];
 
     default_config = {
-      root_dir = [[root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml")]];
+      root_dir = [[breadth_first_root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml")]];
     };
   };
 };

@@ -32,7 +32,7 @@ local root_files = {
 configs.kotlin_language_server = {
   default_config = {
     filetypes = { "kotlin" };
-    root_dir = util.root_pattern(unpack(root_files));
+    root_dir = util.breadth_first_root_pattern(unpack(root_files));
     cmd = { bin_name };
   };
   docs = {
@@ -47,7 +47,7 @@ configs.kotlin_language_server = {
     https://github.com/fwcd/kotlin-language-server
     ]];
     default_config = {
-      root_dir = [[root_pattern("settings.gradle")]];
+      root_dir = [[breadth_first_root_pattern("settings.gradle")]];
       cmd = {"kotlin-language-server"};
       capabilities = [[
       smart code completion,

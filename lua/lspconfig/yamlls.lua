@@ -8,7 +8,7 @@ configs[server_name] = {
   default_config = {
     cmd = {bin_name, "--stdio"};
     filetypes = {"yaml"};
-    root_dir = util.root_pattern(".git", vim.fn.getcwd());
+    root_dir = util.breadth_first_root_pattern(".git", vim.fn.getcwd());
   };
   docs = {
     package_json = "https://raw.githubusercontent.com/redhat-developer/vscode-yaml/master/package.json";
@@ -21,7 +21,7 @@ npm install -g yaml-language-server
 ```
 ]];
     default_config = {
-      root_dir = [[root_pattern(".git", vim.fn.getcwd())]];
+      root_dir = [[breadth_first_root_pattern(".git", vim.fn.getcwd())]];
     };
   };
 }

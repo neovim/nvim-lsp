@@ -6,7 +6,7 @@ configs.zls = {
         cmd = {"zls"};
         filetypes = {"zig", "zir"};
         root_dir = function(fname)
-            return util.root_pattern("zls.json", ".git")(fname) or util.path.dirname(fname)
+            return util.breadth_first_root_pattern("zls.json", ".git")(fname) or util.path.dirname(fname)
         end
     };
     docs = {
@@ -16,7 +16,7 @@ configs.zls = {
            `Zig LSP implementation + Zig Language Server`.
         ]];
         default_config = {
-            root_dir = [[util.root_pattern("zls.json", ".git") or current_file_dirname]];
+            root_dir = [[util.breadth_first_root_pattern("zls.json", ".git") or current_file_dirname]];
         };
     };
 };

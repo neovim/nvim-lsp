@@ -17,7 +17,7 @@ configs.perlls = {
     };
     filetypes = {"perl"};
     root_dir = function(fname)
-      return util.root_pattern(".git")(fname) or vim.fn.getcwd()
+      return util.breadth_first_root_pattern(".git")(fname) or vim.fn.getcwd()
     end;
   };
   docs = {

@@ -7,7 +7,7 @@ configs[server_name] = {
   default_config = {
     cmd = {bin_name};
     filetypes = {"scala"};
-    root_dir = util.root_pattern("build.sbt", "build.sc", "build.gradle", "pom.xml");
+    root_dir = util.breadth_first_root_pattern("build.sbt", "build.sc", "build.gradle", "pom.xml");
     message_level = vim.lsp.protocol.MessageType.Log;
     init_options = {
         statusBarProvider = "show-message",
@@ -43,7 +43,7 @@ cs bootstrap \
 ```
 ]];
     default_config = {
-      root_dir = [[util.root_pattern("build.sbt", "build.sc", "build.gradle", "pom.xml")]];
+      root_dir = [[util.breadth_first_root_pattern("build.sbt", "build.sc", "build.gradle", "pom.xml")]];
     };
   };
 };

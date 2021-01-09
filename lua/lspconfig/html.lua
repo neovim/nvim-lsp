@@ -4,7 +4,7 @@ local util = require 'lspconfig/util'
 local server_name = "html"
 local bin_name = "html-languageserver"
 
-local root_pattern = util.root_pattern("package.json")
+local root_pattern = util.breadth_first_root_pattern("package.json")
 
 configs[server_name] = {
   default_config = {

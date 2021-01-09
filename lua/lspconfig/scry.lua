@@ -6,7 +6,7 @@ configs.scry = {
     cmd = {'scry'},
     filetypes = {'crystal'},
     root_dir = function(fname)
-      return util.root_pattern('shard.yml') or
+      return util.breadth_first_root_pattern('shard.yml') or
         util.find_git_ancestor(fname) or
         util.path.dirname(fname)
     end
@@ -18,7 +18,7 @@ https://github.com/crystal-lang-tools/scry
 Crystal language server.
 ]],
       default_config = {
-          root_dir = [[root_pattern('shard.yml', '.git') or dirname]]
+          root_dir = [[breadth_first_root_pattern('shard.yml', '.git') or dirname]]
       }
   }
 }

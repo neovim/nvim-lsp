@@ -7,8 +7,8 @@ configs.rust_analyzer = {
     filetypes = {"rust"};
     root_dir = function(fname)
       return util.find_git_ancestor(fname) or
-      util.root_pattern("rust-project.json")(fname) or
-      util.root_pattern("Cargo.toml")(fname)
+      util.breadth_first_root_pattern("rust-project.json")(fname) or
+      util.breadth_first_root_pattern("Cargo.toml")(fname)
     end;
     settings = {
       ["rust-analyzer"] = {}
@@ -24,7 +24,7 @@ rust-analyzer (aka rls 2.0), a language server for Rust
 See [docs](https://github.com/rust-analyzer/rust-analyzer/tree/master/docs/user#settings) for extra settings.
     ]];
     default_config = {
-      root_dir = [[root_pattern("Cargo.toml", "rust-project.json")]];
+      root_dir = [[breadth_first_root_pattern("Cargo.toml", "rust-project.json")]];
     };
   };
 };

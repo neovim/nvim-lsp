@@ -5,7 +5,7 @@ configs.rls = {
   default_config = {
     cmd = {"rls"};
     filetypes = {"rust"};
-    root_dir = util.root_pattern("Cargo.toml");
+    root_dir = util.breadth_first_root_pattern("Cargo.toml");
   };
   docs = {
     description = [[
@@ -37,7 +37,7 @@ cmd = {"rustup", "run", "nightly", "rls"}
 ```
     ]];
     default_config = {
-      root_dir = [[root_pattern("Cargo.toml")]];
+      root_dir = [[breadth_first_root_pattern("Cargo.toml")]];
     };
   };
 };

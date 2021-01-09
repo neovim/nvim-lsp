@@ -33,7 +33,7 @@ configs[server_name] = {
       GRADLE_HOME=vim.fn.getenv("GRADLE_HOME"),
     },
     filetypes = { "java" };
-    root_dir = util.root_pattern('.git');
+    root_dir = util.breadth_first_root_pattern('.git');
     init_options = {
       workspace = path.join { vim.loop.os_homedir(), "workspace" };
       jvm_args = {};
@@ -86,7 +86,7 @@ export WORKSPACE=$HOME/workspace
 ```
     ]];
     default_config = {
-      root_dir = [[root_pattern(".git")]];
+      root_dir = [[breadth_first_root_pattern(".git")]];
     };
   };
 }

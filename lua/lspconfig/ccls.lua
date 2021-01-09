@@ -5,7 +5,7 @@ configs.ccls = {
   default_config = {
     cmd = {"ccls"};
     filetypes = {"c", "cpp", "objc", "objcpp"};
-    root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git");
+    root_dir = util.breadth_first_root_pattern("compile_commands.json", "compile_flags.txt", ".git");
   };
   docs = {
     description = [[
@@ -35,7 +35,7 @@ lspconfig.ccls.setup {
 
 ]];
     default_config = {
-      root_dir = [[root_pattern("compile_commands.json", "compile_flags.txt", ".git")]];
+      root_dir = [[breadth_first_root_pattern("compile_commands.json", "compile_flags.txt", ".git")]];
     };
   };
 }

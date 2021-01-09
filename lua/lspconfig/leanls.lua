@@ -17,7 +17,7 @@ https://github.com/leanprover/lean-client-js/tree/master/lean-language-server
 Lean language server.
     ]];
     default_config = {
-      root_dir = [[root_pattern(".git") or os_homedir]];
+      root_dir = [[breadth_first_root_pattern(".git") or os_homedir]];
     };
   };
 }
