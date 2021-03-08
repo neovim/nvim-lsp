@@ -12,9 +12,8 @@ configs.hls = {
       };
     };
     lspinfo = function (cfg)
-      -- return "specific"
-      if cfg.settings.languageServerHaskell.logFile or false then
-        return "logfile: "..cfg.settings.languageServerHaskell.logFile
+      if cfg.settings.haskell.logFile or false then
+        return "logfile: "..cfg.settings.haskell.logFile
       end
       return ""
     end;
