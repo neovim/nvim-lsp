@@ -46,19 +46,20 @@ return function ()
 
   local indent = "  "
   local function make_client_info(client)
-    local server_specific_info = ""
-    if client.config.lspinfo then
-      server_specific_info = client.config.lspinfo(client.config)
-    end
-    return {
+    local lines = {
       "",
-      indent.."Client: "..client.name.." (id "..tostring(client.id)..")",
+      indent.."Client: "..client.name.." (id: "..tostring(client.id).." pid: "..tostring(client.rpc.pid)..")",
       indent.."\troot:      "..client.workspaceFolders[1].name,
       indent.."\tfiletypes: "..table.concat(client.config.filetypes or {}, ', '),
       indent.."\tcmd:       "..remove_newlines(client.config.cmd),
-      indent.."\t"..server_specific_info,
-      ""
     }
+    if client.config.lspinfo then
+      server_specific_info = client.config.lspinfo(client.config)
+      server_specific_info = vim.tbl_map(function (val) return indent.."\t"..val end, server_specific_info)
+      vim.list_extend(lines, server_specific_info)
+    end
+
+    return lines
   end
 
   for _, client in ipairs(buf_clients) do
