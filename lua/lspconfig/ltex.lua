@@ -1,5 +1,4 @@
-local lspconfig = require'lspconfig'
-local configs = require'lspconfig/configs'
+local configs = require 'lspconfig/configs'
 local util = require 'lspconfig/util'
 
 local Dictionary_file = {
@@ -10,7 +9,7 @@ local DisabledRules_file = {
 }
 
 local FalsePositives_file = {
-    ["en"] = {vim.fn.getcwd() .. "false.ltex"} 
+    ["en"] = {vim.fn.getcwd() .. "false.ltex"}
 }
 
 local function readFiles(files)
@@ -121,44 +120,41 @@ local function addTo(filetype, lang, file, value)
     return addToFile(filetype, lang, file, value)
 end
 
-if not lspconfig.ltex then
-    configs.ltex = {
-        default_config = {
-            cmd = {"ltex-ls"};
-            filetypes = {'tex', 'bib', 'md'};
-            root_dir = function(filename)
-                return util.path.dirname(filename)
-            end;
-            settings = {
-                ltex = {
-                    enabled= {"latex", "tex", "bib", "md"},
-                    checkFrequency="save",
-                    language="en",
-                    diagnosticSeverity="information",
-                    setenceCacheSize=5000,
-                    additionalRules = {
-                        enablePickyRules = true,
-                        motherTongue= "en",
-                    };
-                    dictionary = {
-                        ["en"] = readFiles(Dictionary_file["en"] or {}),
-                    };
-                    disabledRules = {
-                        ["en"] = readFiles(DisabledRules_file["en"] or {}),
-                    };
-                    hiddenFalsePositives = {
-                        ["en"] = readFiles(FalsePositives_file["en"] or {}),
-                    };
-                },
-            };
+configs.ltex = {
+    default_config = {
+        cmd = {"ltex-ls"};
+        filetypes = {"latex", "tex", "md"};
+        root_dir = function(filename)
+            return util.path.dirname(filename)
+        end;
+        settings = {
+            ltex = {
+                enabled= {"latex", "tex", "md"},
+                checkFrequency="save",
+                language="en",
+                diagnosticSeverity="information",
+                setenceCacheSize=5000,
+                additionalRules = {
+                    enablePickyRules = true,
+                    motherTongue= "en",
+                };
+                dictionary = {
+                    ["en"] = readFiles(Dictionary_file["en"] or {}),
+                };
+                disabledRules = {
+                    ["en"] = readFiles(DisabledRules_file["en"] or {}),
+                };
+                hiddenFalsePositives = {
+                    ["en"] = readFiles(FalsePositives_file["en"] or {}),
+                };
+            },
         };
     };
-end
+};
 
-lspconfig.ltex.setup{}
-lspconfig.ltex.dictionary_file = Dictionary_file
-lspconfig.ltex.disabledrules_file = DisabledRules_file
-lspconfig.ltex.falsepostivies_file = FalsePositives_file
+configs.ltex.dictionary_file = Dictionary_file
+configs.ltex.disabledrules_file = DisabledRules_file
+configs.ltex.falsepostivies_file = FalsePositives_file
 
 
 -- https://github.com/neovim/nvim-lspconfig/issues/858 can't intercept,
@@ -191,6 +187,6 @@ vim.lsp.buf.execute_command = function(command)
             end
         end
     else
-      orig_execute_command(command)
+        orig_execute_command(command)
     end
 end
