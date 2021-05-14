@@ -9,13 +9,29 @@ jobs:
   lint:
     runs-on: [ubuntu-latest]
     steps:
-    - name: Checkout sources
-      uses: actions/checkout@v2
-    - name: Setup luacheck
-      run: |
-        sudo apt update &&
-        sudo apt install -y lua5.1 luarocks &&
-        sudo luarocks install luacheck
-    - name: Run luacheck
-      run: |
-        sudo make lint
+      - uses: actions/checkout@v2
+
+      - name: Add $HOME/.local/bin to $PATH
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Setup luacheck
+        run: |
+          sudo apt update
+          sudo apt install -y lua5.1 luarocks
+          sudo luarocks install luacheck
+
+      - name: Setup selene
+        run: |
+          wget "https://github.com/Kampfkarren/selene/releases/download/$VERSION/selene-light-$VERSION-linux.zip"
+          echo "$SHA256_CHECKSUM  selene-light-$VERSION-linux.zip" > "selene-light-$VERSION-linux.zip.checksum"
+          sha256sum --check "selene-light-$VERSION-linux.zip.checksum"
+          unzip "selene-light-$VERSION-linux.zip"
+          install -Dp selene "$HOME/.local/bin/selene"
+
+          echo "::add-matcher::.github/workflows/problem_matchers/selene.json"
+        env:
+          VERSION: "0.12.1"
+          SHA256_CHECKSUM: "f0def97880fec7dd4f9ae7239a70f3be6c135bbc68774e9e54e2b7556967c491"
+
+      - name: Run linters
+        run: make lint
