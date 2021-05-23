@@ -7,11 +7,11 @@ local bin_name = "org.eclipse.lemminx-uber.jar"
 configs[name] = {
   default_config = {
     cmd = {
-      "java", "-jar", bin_name
+      bin_name
     },
     filetypes = {"xml"};
     root_dir = function(filename)
-      return util.path.dirname(filename)
+      return util.root_pattern(".git") or util.path.dirname(filename)
     end;
   };
   docs = {
@@ -20,6 +20,19 @@ https://github.com/eclipse/lemminx
 
 Requirements:
  - Java
+
+Features:
+ - textDocument/codeAction
+ - textDocument/completion
+ - textDocument/documentHighlight
+ - textDocument/documentLink
+ - textDocument/documentSymbol
+ - textDocument/foldingRanges
+ - textDocument/formatting
+ - textDocument/hover
+ - textDocument/rangeFormatting
+ - textDocument/rename
+
 
 Build from source, or download from eclipse:
 ```bash
@@ -38,13 +51,6 @@ require'lspconfig'.lemminx.setup{
 }
 ```
 ]];
-    default_config = {
-      cmd = {
-        "java", "-jar", bin_name
-      },
-      filetypes = {"xml"};
-      root_dir = "vim's starting directory";
-    };
   };
 }
 
