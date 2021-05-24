@@ -11,7 +11,7 @@ configs[name] = {
     },
     filetypes = {"xml"};
     root_dir = function(filename)
-      return util.root_pattern(".git") or util.path.dirname(filename)
+      return util.root_pattern(".git")(filename) or util.path.dirname(filename)
     end;
   };
   docs = {
