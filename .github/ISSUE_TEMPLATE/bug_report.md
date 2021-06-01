@@ -10,10 +10,11 @@ labels: bug
 
 - `nvim --version`:
 - nvim-lsp version(commit hash):
-- What language server (If the problem is related to a specific language server):
-- Can you reproduce this behavior on other language server clients (vscode, languageclient-neovim, coc.nvim, etc.):
+- What language server? (If the problem is related to a specific language server):
+- Can you reproduce this behavior on other language server clients? (vscode, languageclient-neovim, coc.nvim, etc.):
 - Can you reproduce this behavior on other language servers offered in the nvim-lspconfig repo? (pyls -> pyright):
-- Is the problem isolated to a particular language server:
+- Is the problem isolated to a particular language server?:
+- Can you reproduce this behavior with a previous version of a particular language server?:
 - Operating system/version:
 
 ### How to reproduce the problem from neovim startup
