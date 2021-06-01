@@ -2,14 +2,14 @@ local configs = require 'lspconfig/configs'
 local util = require 'lspconfig/util'
 
 local name = "lemminx"
-local bin_name = "org.eclipse.lemminx-uber.jar"
+local bin_name = "lemminx"
 
 configs[name] = {
   default_config = {
     cmd = {
       bin_name
     },
-    filetypes = {"xml"};
+    filetypes = {"xml", "xsd", "svg"};
     root_dir = function(filename)
       return util.root_pattern(".git")(filename) or util.path.dirname(filename)
     end;
@@ -18,12 +18,10 @@ configs[name] = {
     description = [[
 https://github.com/eclipse/lemminx
 
-Requirements:
- - Java
-
 Features:
  - textDocument/codeAction
  - textDocument/completion
+ - textDocument/definition (jump between opening and closing tags)
  - textDocument/documentHighlight
  - textDocument/documentLink
  - textDocument/documentSymbol
@@ -32,24 +30,12 @@ Features:
  - textDocument/hover
  - textDocument/rangeFormatting
  - textDocument/rename
+ - textDocument/typeDefinition (link from an XML element to the definition of the element in the schema file)
 
+The easiest way to install the server is to get a binary at https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/ and place it in your PATH.
 
-Build from source, or download from eclipse:
-```bash
-LATEST=$(curl --silent https://repo.eclipse.org/content/repositories/lemminx-releases/org/eclipse/lemminx/org.eclipse.lemminx/maven-metadata.xml | grep "release" | cut -d '>' -f2 | cut -d '<' -f1)
+NOTE to macOS users: Binaries from unidentified developers are blocked by default. If you trust the downloaded binary from jboss.org, run it once, cancel the prompt, then remove the binary from Gatekeeper quarantine with `xattr -d com.apple.quarantine lemminx`. It should now run without being blocked.
 
-curl -L -o org.eclipse.lemminx-uber.jar https://repo.eclipse.org/content/repositories/lemminx-releases/org/eclipse/lemminx/org.eclipse.lemminx/$LATEST/org.eclipse.lemminx-$LATEST-uber.jar
-```
-
-Set path to the jar-file as the `cmd`-path:
-
-```lua
-require'lspconfig'.lemminx.setup{
-    -- Unix
-    cmd = { "java", "-jar", "/path/to/downloaded/org.eclipse.lemminx-uber.jar" },
-    ...
-}
-```
 ]];
   };
 }
