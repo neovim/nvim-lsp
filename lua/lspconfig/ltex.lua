@@ -117,16 +117,13 @@ end
 configs.ltex = {
     default_config = {
         cmd = {"ltex-ls"};
-        filetypes = {'tex', 'bib', 'md'};
-        root_dir = function(filename)
-            return util.path.dirname(filename)
-        end;
+        filetypes = {'tex', 'bib', 'markdown'};
         dictionary_files = { ["en"] = {vim.fn.getcwd() .. "dictionary.ltex"} };
         disabledrules_files = { ["en"] = {vim.fn.getcwd() .. "disable.ltex"} };
         falsepositive_files = { ["en"] = {vim.fn.getcwd() .. "false.ltex"}};
         settings = {
             ltex = {
-                enabled= {"latex", "tex", "bib", "md"},
+                enabled= {"latex", "tex", "bib", "markdown"},
                 checkFrequency="save",
                 language="en",
                 diagnosticSeverity="information",
