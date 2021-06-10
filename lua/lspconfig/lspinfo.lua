@@ -94,15 +94,22 @@ return function ()
       cmd = "cmd not defined"
       cmd_is_executable = cmd
     end
+    print(config.cmd, vim.inspect(config.autostart))
     if config.filetypes then
       for _, filetype_match in pairs(config.filetypes) do
         if buffer_filetype == filetype_match then
+          local autostart_status = "True"
+          if config.autostart == false then
+            autostart_status = "Disabled"
+          end
+          -- print("autostart", config.autostart)
           local matching_config_info = {
             indent.."",
             indent.."Config: "..config.name,
             indent.."\tcmd:               "..cmd,
             indent.."\tcmd is executable: ".. cmd_is_executable,
             indent.."\tidentified root:   "..(config.get_root_dir(buffer_dir) or "None"),
+            indent.."\tautostart:         "..(autostart_status),
             indent.."\tcustom handlers:   "..table.concat(vim.tbl_keys(config.handlers), ", "),
           }
          vim.list_extend(buf_lines, matching_config_info)

@@ -8,6 +8,7 @@ local fn = vim.fn
 local M = {}
 
 M.default_config = {
+  autostart = true,
   log_level = lsp.protocol.MessageType.Warning;
   message_level = lsp.protocol.MessageType.Warning;
   settings = vim.empty_dict();
