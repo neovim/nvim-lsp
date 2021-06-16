@@ -4,7 +4,7 @@ configs.jedi_language_server = {
   default_config = {
     cmd = {"jedi-language-server"};
     filetypes = {"python"};
-    root_dir = function(fname)
+    root_dir = function(_fname)
       return vim.fn.getcwd()
     end;
   };

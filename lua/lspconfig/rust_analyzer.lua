@@ -5,7 +5,7 @@ local lsp = vim.lsp
 local function reload_workspace(bufnr)
   bufnr = util.validate_bufnr(bufnr)
   lsp.buf_request(bufnr, 'rust-analyzer/reloadWorkspace', nil,
-      function(err, _, result, _)
+      function(err)
         if err then error(tostring(err)) end
         vim.notify("Cargo workspace reloaded")
       end)

@@ -4,7 +4,7 @@ configs.pyls = {
   default_config = {
     cmd = {"pyls"};
     filetypes = {"python"};
-    root_dir = function(fname)
+    root_dir = function(_fname)
       return vim.fn.getcwd()
     end;
   };
