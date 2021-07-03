@@ -196,6 +196,68 @@ M.path = (function()
   }
 end)()
 
+local function set_value(settings, key, value)
+  local keys = vim.split(key, '.', true)
+  for idx,k in ipairs(keys) do
+    if idx == #keys then
+      settings[k] = value
+    else
+      if settings[k] == nil then
+        settings[k] = {}
+      end
+      settings = settings[k]
+    end
+  end
+end
+
+local function read_package_json(package_json)
+  local file = io.open(package_json, 'rb')
+  if not file then return {} end
+  local content = fn.json_decode(file:read "*a").contributes.configuration.properties
+  file:close()
+
+  local settings = {}
+  for k, v in pairs(content) do
+      set_value(settings, k, v)
+  end
+  return settings
+end
+
+local function deep_equal(tbl_a, tbl_b)
+  for k,v in pairs(tbl_b) do
+    if tbl_a[k] == nil then
+      return false
+    elseif type(v) == "table"  and tbl_a[k]['type'] == nil then
+      if not deep_equal(tbl_a[k], v) then
+        return false
+      end
+    else
+      local v_type = type(v)
+      local tbl_v_type = type(tbl_a[k]['default'])
+
+      if tbl_a[k]['type'] ~= nil and tbl_v_type == "nil" then
+        tbl_v_type = tbl_a[k]['type']
+        tbl_v_type = string.gsub(tbl_v_type, "object", "table")
+        tbl_v_type = string.gsub(tbl_v_type, "array", "table")
+        tbl_v_type = string.gsub(tbl_v_type, "integer", "number")
+      end
+
+      if v_type ~= tbl_v_type then
+        return false
+      end
+    end
+  end
+  return true
+end
+
+function M.validate_server_settings(server_settings, package_json)
+  -- TODO (saad parwaiz) improve validation
+  local default_server_settings = read_package_json(package_json)
+  if deep_equal(default_server_settings, server_settings) then
+    return server_settings
+  end
+  return {}
+end
 
 -- Returns a function(root_dir), which, when called with a root_dir it hasn't
 -- seen before, will call make_config(root_dir) and start a new client.
