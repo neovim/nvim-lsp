@@ -5,7 +5,9 @@ configs.gopls = {
   default_config = {
     cmd = {"gopls"};
     filetypes = {"go", "gomod"};
-    root_dir = util.root_pattern("go.mod", ".git");
+    root_dir = function(fname)
+      return util.root_pattern(".git","go.mod")(fname) or vim.fn.getcwd()
+    end;
   };
   -- on_new_config = function(new_config) end;
   -- on_attach = function(client, bufnr) end;
