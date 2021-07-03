@@ -100,6 +100,7 @@ configs[server_name] = {
       enable = true;
       lint = false;
       unstable = false;
+      importMap = "./import_map.json";
     };
     handlers = {
       ["textDocument/definition"] = denols_handler;
