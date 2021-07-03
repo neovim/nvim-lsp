@@ -1,6 +1,8 @@
 test:
 	sh ./scripts/run_test.sh
-lint:
-	luacheck lua/* test/*
-.PHONY: test lint
 
+lint:
+	luacheck .
+	selene --display-style=quiet .
+
+.PHONY: test lint
