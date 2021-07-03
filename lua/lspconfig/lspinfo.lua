@@ -44,6 +44,33 @@ return function ()
     return cmd
   end
 
+  local function available_capabilities(resolved_capabilities)
+    -- these are the capabilities that might be interesting to the user
+    local display_keys = {
+      "call_hierarchy",
+      "code_action",
+      "code_lens",
+      "completion",
+      "declaration",
+      "document_formatting",
+      "document_highlight",
+      "document_range_formatting",
+      "document_symbol",
+      "execute_command",
+      "find_references",
+      "goto_definition",
+      "hover",
+      "implementation",
+      "rename",
+      "signature_help",
+      "type_definition",
+    }
+    return vim.tbl_filter(function(key)
+      -- keep only the capabilities that are interesting & available
+      return vim.tbl_contains(display_keys, key) and resolved_capabilities[key] == true
+    end, vim.tbl_keys(resolved_capabilities))
+  end
+
   local indent = "  "
   local function make_client_info(client)
     local server_specific_info = ""
@@ -53,9 +80,10 @@ return function ()
     return {
       "",
       indent.."Client: "..client.name.." (id "..tostring(client.id)..")",
-      indent.."\troot:      "..client.workspaceFolders[1].name,
-      indent.."\tfiletypes: "..table.concat(client.config.filetypes or {}, ', '),
-      indent.."\tcmd:       "..remove_newlines(client.config.cmd),
+      indent.."\troot:         "..client.workspaceFolders[1].name,
+      indent.."\tfiletypes:    "..table.concat(client.config.filetypes or {}, ', '),
+      indent.."\tcmd:          "..remove_newlines(client.config.cmd),
+      indent.."\tcapabilities: "..table.concat(available_capabilities(client.resolved_capabilities or {}), ', '),
       indent.."\t"..server_specific_info,
       ""
     }
