@@ -158,8 +158,10 @@ M.path = (function()
   end
 
   -- Iterate the path until we find the rootdir.
-  local function iterate_parents(path)
-    path = uv.fs_realpath(path)
+  local function iterate_parents(path, followsym)
+    if followsym ~= false then
+      path = uv.fs_realpath(path)
+    end
     local function it(s, v)
       if not v then return end
       if is_fs_root(v) then return end
@@ -244,10 +246,10 @@ function M.server_per_root_dir_manager(_make_config)
   return manager
 end
 
-function M.search_ancestors(startpath, func)
+function M.search_ancestors(startpath, func, followsym)
   validate { func = {func, 'f'} }
   if func(startpath) then return startpath end
-  for path in M.path.iterate_parents(startpath) do
+  for path in M.path.iterate_parents(startpath, followsym) do
     if func(path) then return path end
   end
 end
@@ -263,8 +265,8 @@ function M.root_pattern(...)
       end
     end
   end
-  return function(startpath)
-    return M.search_ancestors(startpath, matcher)
+  return function(startpath, followsym)
+    return M.search_ancestors(startpath, matcher, followsym)
   end
 end
 function M.find_git_ancestor(startpath)
