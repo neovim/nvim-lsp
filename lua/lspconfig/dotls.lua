@@ -9,6 +9,7 @@ local root_files = {
 }
 
 configs[server_name] = {
+  language_name = "DOT",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "dot" },

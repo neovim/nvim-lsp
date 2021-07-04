@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.sqls = {
+  language_name = "SQL",
   default_config = {
     cmd = { "sqls" },
     filetypes = { "sql", "mysql" },

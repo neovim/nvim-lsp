@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.rls = {
+  language_name = "Rust",
   default_config = {
     cmd = { "rls" },
     filetypes = { "rust" },

@@ -24,6 +24,7 @@ local function organize_imports()
 end
 
 configs[server_name] = {
+  language_name = "Python",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "python" },

@@ -5,6 +5,7 @@ local server_name = "dockerls"
 local bin_name = "docker-langserver"
 
 configs[server_name] = {
+  language_name = "Docker",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "Dockerfile", "dockerfile" },

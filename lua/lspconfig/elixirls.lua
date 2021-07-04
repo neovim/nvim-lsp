@@ -3,6 +3,7 @@ local util = require "lspconfig/util"
 
 local server_name = "elixirls"
 configs[server_name] = {
+  language_name = "Elexir",
   default_config = {
     filetypes = { "elixir", "eelixir" },
     root_dir = function(fname)

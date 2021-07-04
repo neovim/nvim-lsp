@@ -28,6 +28,7 @@ local analysis_server_snapshot_path = function()
 end
 
 configs[server_name] = {
+  language_name = "Dart",
   default_config = {
     cmd = { bin_name, analysis_server_snapshot_path(), "--lsp" },
     filetypes = { "dart" },

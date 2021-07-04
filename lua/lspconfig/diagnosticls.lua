@@ -5,6 +5,7 @@ local server_name = "diagnosticls"
 local bin_name = "diagnostic-languageserver"
 
 configs[server_name] = {
+  language_name = "Diagnostics",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = {},

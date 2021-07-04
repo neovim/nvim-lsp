@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.rome = {
+  language_name = "TypeScript",
   default_config = {
     cmd = { "rome", "lsp" },
     filetypes = {

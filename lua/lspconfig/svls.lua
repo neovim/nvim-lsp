@@ -4,6 +4,7 @@ local util = require "lspconfig/util"
 local server_name = "svls"
 
 configs[server_name] = {
+  language_name = "Verilog",
   default_config = {
     cmd = { "svls" },
     filetypes = { "verilog", "systemverilog" },

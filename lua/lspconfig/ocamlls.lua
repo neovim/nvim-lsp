@@ -5,6 +5,7 @@ local server_name = "ocamlls"
 local bin_name = "ocaml-language-server"
 
 configs[server_name] = {
+  language_name = "OCaml",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "ocaml", "reason" },

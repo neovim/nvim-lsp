@@ -5,6 +5,7 @@ local name = "groovyls"
 local bin_name = "groovy-language-server-all.jar"
 
 configs[name] = {
+  language_name = "Java",
   default_config = {
     cmd = {
       "java",

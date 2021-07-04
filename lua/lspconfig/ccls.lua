@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.ccls = {
+  language_name = "C like",
   default_config = {
     cmd = { "ccls" },
     filetypes = { "c", "cpp", "objc", "objcpp" },

@@ -4,6 +4,7 @@ local util = require "lspconfig/util"
 local server_name = "zeta_note"
 
 configs[server_name] = {
+  language_name = "Markdown",
   default_config = {
     filetypes = { "markdown" },
     root_dir = util.root_pattern ".zeta.toml",

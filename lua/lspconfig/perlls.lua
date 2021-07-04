@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.perlls = {
+  language_name = "Perl",
   default_config = {
     cmd = {
       "perl",

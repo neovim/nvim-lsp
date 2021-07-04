@@ -23,6 +23,7 @@ local meson_matcher = function(path)
 end
 
 configs.vala_ls = {
+  language_name = "Vala",
   default_config = {
     cmd = { "vala-language-server" },
     filetypes = { "vala", "genie" },

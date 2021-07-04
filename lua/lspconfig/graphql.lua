@@ -5,6 +5,7 @@ local server_name = "graphql"
 local bin_name = "graphql-lsp"
 
 configs[server_name] = {
+  language_name = "GraphQL",
   default_config = {
     cmd = { bin_name, "server", "-m", "stream" },
     filetypes = { "graphql" },

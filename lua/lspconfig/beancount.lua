@@ -5,6 +5,7 @@ local server_name = "beancount"
 local bin_name = "beancount-langserver"
 
 configs[server_name] = {
+  language_name = "Beancount",
   default_config = {
     cmd = { bin_name },
     filetypes = { "beancount" },

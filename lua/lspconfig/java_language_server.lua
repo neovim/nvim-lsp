@@ -4,6 +4,7 @@ local configs = require "lspconfig/configs"
 local name = "java_language_server"
 
 configs[name] = {
+  language_name = "Java",
   default_config = {
     cmd = {},
     filetypes = { "java" },

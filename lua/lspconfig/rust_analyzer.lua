@@ -13,6 +13,7 @@ local function reload_workspace(bufnr)
 end
 
 configs.rust_analyzer = {
+  language_name = "Rust",
   default_config = {
     cmd = { "rust-analyzer" },
     filetypes = { "rust" },

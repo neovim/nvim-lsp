@@ -5,6 +5,7 @@ local server_name = "sorbet"
 local bin_name = "srb"
 
 configs[server_name] = {
+  language_name = "Ruby",
   default_config = {
     cmd = { bin_name, "tc", "--lsp" },
     filetypes = { "ruby" },

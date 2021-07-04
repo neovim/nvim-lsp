@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.tflint = {
+  language_name = "Terraform",
   default_config = {
     cmd = { "tflint", "--langserver" },
     filetypes = { "terraform" },

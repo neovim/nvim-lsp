@@ -3,6 +3,7 @@ local util = require "lspconfig/util"
 local server_name = "omnisharp"
 
 configs[server_name] = {
+  language_name = "C#",
   default_config = {
     filetypes = { "cs", "vb" },
     root_dir = util.root_pattern("*.csproj", "*.sln"),

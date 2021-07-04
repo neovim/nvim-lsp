@@ -12,6 +12,7 @@ local root_files = {
 }
 
 configs[server_name] = {
+  language_name = "Puppet",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "puppet" },

@@ -4,6 +4,7 @@ local server_name = "metals"
 local bin_name = "metals"
 
 configs[server_name] = {
+  language_name = "Scala",
   default_config = {
     cmd = { bin_name },
     filetypes = { "scala" },

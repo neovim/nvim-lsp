@@ -4,6 +4,7 @@ local util = require "lspconfig/util"
 local name = "vls"
 
 configs[name] = {
+  language_name = "V",
   default_config = {
     filetypes = { "vlang" },
     root_dir = util.root_pattern("v.mod", ".git"),

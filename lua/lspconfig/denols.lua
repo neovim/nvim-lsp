@@ -100,6 +100,7 @@ local function denols_references(context)
 end
 
 configs[server_name] = {
+  language_name = "TypeScript",
   default_config = {
     cmd = { "deno", "lsp" },
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },

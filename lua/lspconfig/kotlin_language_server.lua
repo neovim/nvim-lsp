@@ -32,6 +32,7 @@ local fallback_root_files = {
 }
 
 configs.kotlin_language_server = {
+  language_name = "Kotlin",
   default_config = {
     filetypes = { "kotlin" },
     root_dir = function(fname)

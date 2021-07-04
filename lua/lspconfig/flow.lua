@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.flow = {
+  language_name = "TypeScript",
   default_config = {
     cmd = { "npx", "--no-install", "flow", "lsp" },
     filetypes = { "javascript", "javascriptreact", "javascript.jsx" },

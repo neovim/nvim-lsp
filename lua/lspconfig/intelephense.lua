@@ -5,6 +5,7 @@ local server_name = "intelephense"
 local bin_name = "intelephense"
 
 configs[server_name] = {
+  language_name = "PHP",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "php" },

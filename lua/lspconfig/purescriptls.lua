@@ -8,6 +8,7 @@ if vim.fn.has "win32" == 1 then
 end
 
 configs[server_name] = {
+  language_name = "PureScript",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "purescript" },

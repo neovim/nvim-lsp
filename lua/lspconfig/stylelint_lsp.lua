@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.stylelint_lsp = {
+  language_name = "Stylelint",
   default_config = {
     cmd = { "stylelint-lsp", "--stdio" },
     filetypes = {

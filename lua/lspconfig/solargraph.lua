@@ -6,6 +6,7 @@ if vim.fn.has "win32" == 1 then
   bin_name = bin_name .. ".bat"
 end
 configs.solargraph = {
+  language_name = "Ruby",
   default_config = {
     cmd = { bin_name, "stdio" },
     settings = {

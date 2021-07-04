@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.lean3ls = {
+  language_name = "Lean",
   default_config = {
     cmd = { "lean-language-server", "--stdio", "--", "-M", "4096", "-T", "100000" },
     filetypes = { "lean3" },

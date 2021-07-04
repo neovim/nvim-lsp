@@ -5,6 +5,7 @@ local server_name = "jsonls"
 local bin_name = "vscode-json-language-server"
 
 configs[server_name] = {
+  language_name = "JSON",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "json" },

@@ -5,6 +5,7 @@ local server_name = "svelte"
 local bin_name = "svelteserver"
 
 configs[server_name] = {
+  language_name = "Svelte",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "svelte" },

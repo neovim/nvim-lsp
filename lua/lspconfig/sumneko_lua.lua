@@ -4,6 +4,7 @@ local util = require "lspconfig/util"
 local name = "sumneko_lua"
 
 configs[name] = {
+  language_name = "Lua",
   default_config = {
     filetypes = { "lua" },
     root_dir = function(fname)

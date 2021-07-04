@@ -70,6 +70,7 @@ local function fix_zero_version(workspace_edit)
 end
 
 configs[server_name] = {
+  language_name = "Java",
   default_config = {
     cmd = cmd,
     cmd_env = {

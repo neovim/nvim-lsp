@@ -5,6 +5,7 @@ local server_name = "vuels"
 local bin_name = "vls"
 
 configs[server_name] = {
+  language_name = "Vue",
   default_config = {
     cmd = { bin_name },
     filetypes = { "vue" },

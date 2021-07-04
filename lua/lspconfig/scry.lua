@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.scry = {
+  language_name = "Crystal",
   default_config = {
     cmd = { "scry" },
     filetypes = { "crystal" },

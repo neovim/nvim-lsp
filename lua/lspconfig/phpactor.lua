@@ -5,6 +5,7 @@ local server_name = "phpactor"
 local bin_name = "phpactor"
 
 configs[server_name] = {
+  language_name = "PHP",
   default_config = {
     cmd = { bin_name, "language-server" },
     filetypes = { "php" },

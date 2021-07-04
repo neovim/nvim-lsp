@@ -15,6 +15,7 @@ end
 local default_probe_dir = get_probe_dir(vim.fn.getcwd())
 
 configs[server_name] = {
+  language_name = "Angular",
   default_config = {
     cmd = {
       "ngserver",

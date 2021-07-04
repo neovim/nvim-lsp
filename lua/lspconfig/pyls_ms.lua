@@ -4,7 +4,7 @@ local util = require "lspconfig/util"
 local name = "pyls_ms"
 
 configs[name] = {
-
+  language_name = "Python",
   default_config = {
     filetypes = { "python" },
     root_dir = function(fname)

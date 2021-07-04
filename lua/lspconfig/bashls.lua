@@ -4,6 +4,7 @@ local util = require "lspconfig/util"
 local server_name = "bashls"
 
 configs[server_name] = {
+  language_name = "Bash",
   default_config = {
     cmd = { "bash-language-server", "start" },
     cmd_env = {

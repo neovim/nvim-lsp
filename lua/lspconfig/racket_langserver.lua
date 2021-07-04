@@ -6,6 +6,7 @@ local root_files = {
 }
 
 configs.racket_langserver = {
+  language_name = "Racket",
   default_config = {
     cmd = { "racket", "--lib", "racket-langserver" },
     filetypes = { "racket", "scheme" },

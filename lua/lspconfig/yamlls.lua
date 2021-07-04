@@ -5,6 +5,7 @@ local server_name = "yamlls"
 local bin_name = "yaml-language-server"
 
 configs[server_name] = {
+  language_name = "YAML",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "yaml" },

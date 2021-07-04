@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.gopls = {
+  language_name = "Go",
   default_config = {
     cmd = { "gopls" },
     filetypes = { "go", "gomod" },

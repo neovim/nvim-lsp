@@ -21,6 +21,7 @@ local cmd = {
 }
 
 configs.julials = {
+  language_name = "Julia",
   default_config = {
     cmd = cmd,
     on_new_config = function(new_config, _)

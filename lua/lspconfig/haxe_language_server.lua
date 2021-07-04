@@ -2,6 +2,7 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.haxe_language_server = {
+  language_name = "Haxe",
   default_config = {
     cmd = { "haxe-language-server" },
     filetypes = { "haxe" },

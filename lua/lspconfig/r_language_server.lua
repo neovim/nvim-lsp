@@ -2,6 +2,7 @@ local util = require "lspconfig/util"
 local configs = require "lspconfig/configs"
 
 configs.r_language_server = {
+  language_name = "R",
   default_config = {
     cmd = { "R", "--slave", "-e", "languageserver::run()" },
     filetypes = { "r", "rmd" },

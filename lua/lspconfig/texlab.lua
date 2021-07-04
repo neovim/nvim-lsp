@@ -54,6 +54,7 @@ end
 -- end
 
 configs.texlab = {
+  language_name = "TexLab",
   default_config = {
     cmd = { "texlab" },
     filetypes = { "tex", "bib" },
