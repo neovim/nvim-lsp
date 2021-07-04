@@ -9,6 +9,7 @@ theme:
     primary: green
     accent: green
   features:
+    - navigation.expand
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
@@ -22,3 +23,96 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/neovim/nvim-lspconfig
+nav:
+  - Home: index.md
+  - Install: install.md
+  - Languages:
+    - Introduction: languages/index.md
+    - Language Servers:
+      - Ada (als): languages/als.md
+      - Angular (angularls): languages/angularls.md
+      - Bash (bashls): languages/bashls.md
+      - Beancount (beancount): languages/beancount.md
+      - C like (ccls): languages/ccls.md
+      - C like (clangd): languages/clangd.md
+      - C like (sourcekit): languages/sourcekit.md
+      - Clojure (clojure_lsp): languages/clojure_lsp.md
+      - CMake (cmake): languages/cmake.md
+      - C(omnisharp): languages/omnisharp.md
+      - Crystal (crystalline): languages/crystalline.md
+      - Crystal (scry): languages/scry.md
+      - CSS (cssls): languages/cssls.md
+      - Dart (dartls): languages/dartls.md
+      - Dhall (dhall_lsp_server): languages/dhall_lsp_server.md
+      - Docker (dockerls): languages/dockerls.md
+      - DOT (dotls): languages/dotls.md
+      - Elexir (elixirls): languages/elixirls.md
+      - Elm (elmls): languages/elmls.md
+      - Erlang (erlangls): languages/erlangls.md
+      - F(fsautocomplete): languages/fsautocomplete.md
+      - Fortan (fortls): languages/fortls.md
+      - GDScript (gdscript): languages/gdscript.md
+      - Go (gopls): languages/gopls.md
+      - GraphQL (graphql): languages/graphql.md
+      - Haskell (ghcide): languages/ghcide.md
+      - Haskell (hie): languages/hie.md
+      - Haskell (hls): languages/hls.md
+      - Haxe (haxe_language_server): languages/haxe_language_server.md
+      - HTML (html): languages/html.md
+      - Java (groovyls): languages/groovyls.md
+      - Java (java_language_server): languages/java_language_server.md
+      - Java (jdtls): languages/jdtls.md
+      - JSON (jsonls): languages/jsonls.md
+      - Julia (julials): languages/julials.md
+      - Kotlin (kotlin_language_server): languages/kotlin_language_server.md
+      - Lean (lean3ls): languages/lean3ls.md
+      - Lean (leanls): languages/leanls.md
+      - Lua (sumneko_lua): languages/sumneko_lua.md
+      - Markdown (zeta_note): languages/zeta_note.md
+      - Nim (nimls): languages/nimls.md
+      - Nix (rnix): languages/rnix.md
+      - OCaml (ocamlls): languages/ocamlls.md
+      - OCaml (ocamllsp): languages/ocamllsp.md
+      - Perl (perlls): languages/perlls.md
+      - PHP (intelephense): languages/intelephense.md
+      - PHP (phpactor): languages/phpactor.md
+      - Powershell (powershell_es): languages/powershell_es.md
+      - Prisma (prismals): languages/prismals.md
+      - Puppet (puppet): languages/puppet.md
+      - PureScript (purescriptls): languages/purescriptls.md
+      - Python (jedi_language_server): languages/jedi_language_server.md
+      - Python (pyls): languages/pyls.md
+      - Python (pyls_ms): languages/pyls_ms.md
+      - Python (pylsp): languages/pylsp.md
+      - Python (pyright): languages/pyright.md
+      - Racket (racket_langserver): languages/racket_langserver.md
+      - ReScript (rescriptls): languages/rescriptls.md
+      - R (r_language_server): languages/r_language_server.md
+      - Ruby (solargraph): languages/solargraph.md
+      - Ruby (sorbet): languages/sorbet.md
+      - Rust (rls): languages/rls.md
+      - Rust (rust_analyzer): languages/rust_analyzer.md
+      - Scala (metals): languages/metals.md
+      - SQL (sqlls): languages/sqlls.md
+      - SQL (sqls): languages/sqls.md
+      - Stylelint (stylelint_lsp): languages/stylelint_lsp.md
+      - Svelte (svelte): languages/svelte.md
+      - Tailwind (tailwindcss): languages/tailwindcss.md
+      - Terraform (terraformls): languages/terraformls.md
+      - Terraform (tflint): languages/tflint.md
+      - TexLab (texlab): languages/texlab.md
+      - TypeScript (denols): languages/denols.md
+      - TypeScript (flow): languages/flow.md
+      - TypeScript (rome): languages/rome.md
+      - TypeScript (tsserver): languages/tsserver.md
+      - Vala (vala_ls): languages/vala_ls.md
+      - Verilog (svls): languages/svls.md
+      - VimScript (vimls): languages/vimls.md
+      - Vue (vuels): languages/vuels.md
+      - V (vls): languages/vls.md
+      - YAML (yamlls): languages/yamlls.md
+      - Zig (zls): languages/zls.md
+    - Misc Servers:
+      - CodeQL (codeqlls): languages/codeqlls.md
+      - Diagnostics (diagnosticls): languages/diagnosticls.md
+      - Diagnostics (efm): languages/efm.md
