@@ -1,16 +1,24 @@
 site_name: nvim-lspconfig
 site_url: https://example.com/
+repo_url: https://github.com/neovim/nvim-lspconfig
 theme:
   name: material
   logo: assets/logo.png
+  favicon: assets/images/favicon.ico
   palette:
     primary: green
     accent: green
   features:
+    - navigation.instant
     - navigation.tracking
     - navigation.tabs
+    - navigation.top
 markdown_extensions:
   - sane_lists
   - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.magiclink
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/neovim/nvim-lspconfig
