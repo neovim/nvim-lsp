@@ -1,0 +1,11 @@
+site_name: nvim-lspconfig
+site_url: https://example.com/
+theme:
+  name: material
+  logo: assets/logo.png
+  palette:
+    primary: green
+    accent: green
+  features:
+    - navigation.tracking
+    - navigation.tabs
