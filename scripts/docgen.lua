@@ -76,10 +76,7 @@ local lsp_section_template = [[
 require'lspconfig'.{{template_name}}.setup{}
 ```
 
-**Commands and default values:**
-```lua
 {{body}}
-```
 
 {{settings}}
 
@@ -110,13 +107,16 @@ local function make_lsp_sections()
       params.language_name = string.format("%s (%s)", template_def.language_name, template_name)
     end
 
-    params.body = make_section(2, "\n\n", {
+    params.body = make_section(0, "\n\n", {
       function()
         if not template_def.commands then
           return
         end
+        if not next(template_def.commands) then
+          return
+        end
         return make_section(0, "\n", {
-          "Commands:",
+          "### Commands",
           sorted_map_table(template_def.commands, function(name, def)
             if def.description then
               return string.format("- %s: %s", name, def.description)
@@ -130,7 +130,8 @@ local function make_lsp_sections()
           return
         end
         return make_section(0, "\n", {
-          "Default Values:",
+          "### Default Values",
+          '```lua',
           sorted_map_table(template_def.default_config, function(k, v)
             local description = ((docs or {}).default_config or {})[k]
             if description and type(description) ~= "string" then
@@ -155,6 +156,7 @@ local function make_lsp_sections()
             end
             return indent(2, string.format("%s = %s", k, description or inspect(v)))
           end),
+          '```',
         })
       end,
     })
