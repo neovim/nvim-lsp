@@ -9,3 +9,8 @@ theme:
   features:
     - navigation.tracking
     - navigation.tabs
+markdown_extensions:
+  - sane_lists
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.magiclink
