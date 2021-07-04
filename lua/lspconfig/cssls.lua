@@ -7,7 +7,6 @@ local bin_name = "vscode-css-language-server"
 local root_pattern = util.root_pattern "package.json"
 
 configs[server_name] = {
-  language_name = "CSS",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "css", "scss", "less" },
@@ -21,6 +20,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "CSS",
     description = [[
 
 https://github.com/hrsh7th/vscode-langservers-extracted

@@ -14,7 +14,6 @@ local function make_cmd(bundle_path)
 end
 
 configs[server_name] = {
-  language_name = "Powershell",
   default_config = {
     on_new_config = function(new_config, _)
       local bundle_path = new_config.bundle_path
@@ -26,6 +25,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "Powershell",
     description = [[
 https://github.com/PowerShell/PowerShellEditorServices
 

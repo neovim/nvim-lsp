@@ -8,7 +8,6 @@ if vim.fn.has "win32" == 1 then
 end
 
 configs[server_name] = {
-  language_name = "TypeScript",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
@@ -19,6 +18,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "TypeScript",
     description = [[
 https://github.com/theia-ide/typescript-language-server
 

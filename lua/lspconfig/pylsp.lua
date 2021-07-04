@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.pylsp = {
-  language_name = "Python",
   default_config = {
     cmd = { "pylsp" },
     filetypes = { "python" },
@@ -18,6 +17,7 @@ configs.pylsp = {
     end,
   },
   docs = {
+    language_name = "Python",
     description = [[
 https://github.com/python-lsp/python-lsp-server
 

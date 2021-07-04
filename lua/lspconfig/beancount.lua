@@ -5,7 +5,6 @@ local server_name = "beancount"
 local bin_name = "beancount-langserver"
 
 configs[server_name] = {
-  language_name = "Beancount",
   default_config = {
     cmd = { bin_name },
     filetypes = { "beancount" },
@@ -20,6 +19,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "Beancount",
     description = [[
 https://github.com/polarmutex/beancount-language-server#installation
 

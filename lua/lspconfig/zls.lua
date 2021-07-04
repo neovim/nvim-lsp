@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.zls = {
-  language_name = "Zig",
   default_config = {
     cmd = { "zls" },
     filetypes = { "zig", "zir" },
@@ -11,6 +10,7 @@ configs.zls = {
     end,
   },
   docs = {
+    language_name = "Zig",
     description = [[
            https://github.com/zigtools/zls
 

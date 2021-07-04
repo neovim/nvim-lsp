@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.hls = {
-  language_name = "Haskell",
   default_config = {
     cmd = { "haskell-language-server-wrapper", "--lsp" },
     filetypes = { "haskell", "lhaskell" },
@@ -22,6 +21,7 @@ configs.hls = {
   },
 
   docs = {
+    language_name = "Haskell",
     description = [[
 https://github.com/haskell/haskell-language-server
 

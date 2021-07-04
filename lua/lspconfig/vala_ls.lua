@@ -23,7 +23,6 @@ local meson_matcher = function(path)
 end
 
 configs.vala_ls = {
-  language_name = "Vala",
   default_config = {
     cmd = { "vala-language-server" },
     filetypes = { "vala", "genie" },
@@ -33,6 +32,7 @@ configs.vala_ls = {
     end,
   },
   docs = {
+    language_name = "Vala",
     description = "https://github.com/benwaffle/vala-language-server",
     default_config = {
       root_dir = [[root_pattern("meson.build", ".git")]],

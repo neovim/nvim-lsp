@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.ccls = {
-  language_name = "C like",
   default_config = {
     cmd = { "ccls" },
     filetypes = { "c", "cpp", "objc", "objcpp" },
@@ -11,6 +10,7 @@ configs.ccls = {
     end,
   },
   docs = {
+    language_name = "C like",
     description = [[
 https://github.com/MaskRay/ccls/wiki
 

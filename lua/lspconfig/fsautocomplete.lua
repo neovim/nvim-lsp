@@ -4,7 +4,6 @@ local util = require "lspconfig/util"
 local server_name = "fsautocomplete"
 
 configs[server_name] = {
-  language_name = "F#",
   default_config = {
     cmd = { "dotnet", "fsautocomplete", "--background-service-enabled" },
     root_dir = util.root_pattern("*.sln", "*.fsproj", ".git"),
@@ -14,6 +13,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "F#",
     description = [[
 https://github.com/fsharp/FsAutoComplete
 

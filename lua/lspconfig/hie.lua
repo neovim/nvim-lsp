@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.hie = {
-  language_name = "Haskell",
   default_config = {
     cmd = { "hie-wrapper", "--lsp" },
     filetypes = { "haskell" },
@@ -10,6 +9,7 @@ configs.hie = {
   },
 
   docs = {
+    language_name = "Haskell",
     package_json = "https://raw.githubusercontent.com/alanz/vscode-hie-server/master/package.json",
     description = [[
 https://github.com/haskell/haskell-ide-engine

@@ -8,7 +8,6 @@ if vim.fn.has "win32" == 1 then
 end
 
 configs[server_name] = {
-  language_name = "Prisma",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "prisma" },
@@ -20,6 +19,7 @@ configs[server_name] = {
     root_dir = util.root_pattern(".git", "package.json"),
   },
   docs = {
+    language_name = "Prisma",
     description = [[
 npm install -g @prisma/language-server
 

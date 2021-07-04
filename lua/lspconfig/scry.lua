@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.scry = {
-  language_name = "Crystal",
   default_config = {
     cmd = { "scry" },
     filetypes = { "crystal" },
@@ -11,6 +10,7 @@ configs.scry = {
     end,
   },
   docs = {
+    language_name = "Crystal",
     description = [[
 https://github.com/crystal-lang-tools/scry
 

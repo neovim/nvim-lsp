@@ -5,7 +5,6 @@ local server_name = "graphql"
 local bin_name = "graphql-lsp"
 
 configs[server_name] = {
-  language_name = "GraphQL",
   default_config = {
     cmd = { bin_name, "server", "-m", "stream" },
     filetypes = { "graphql" },
@@ -13,6 +12,7 @@ configs[server_name] = {
   },
 
   docs = {
+    language_name = "GraphQL",
     description = [[
 https://github.com/graphql/graphiql/tree/main/packages/graphql-language-service-cli
 

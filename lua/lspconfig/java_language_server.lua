@@ -4,7 +4,6 @@ local configs = require "lspconfig/configs"
 local name = "java_language_server"
 
 configs[name] = {
-  language_name = "Java",
   default_config = {
     cmd = {},
     filetypes = { "java" },
@@ -12,6 +11,7 @@ configs[name] = {
     settings = {},
   },
   docs = {
+    language_name = "Java",
     description = [[
 https://github.com/georgewfraser/java-language-server
 

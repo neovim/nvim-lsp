@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.stylelint_lsp = {
-  language_name = "Stylelint",
   default_config = {
     cmd = { "stylelint-lsp", "--stdio" },
     filetypes = {
@@ -21,6 +20,7 @@ configs.stylelint_lsp = {
     settings = {},
   },
   docs = {
+    language_name = "Stylelint",
     package_json = "https://raw.githubusercontent.com/bmatcuk/coc-stylelintplus/master/package.json",
     description = [[
 https://github.com/bmatcuk/stylelint-lsp

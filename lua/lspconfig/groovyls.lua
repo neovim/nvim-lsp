@@ -5,7 +5,6 @@ local name = "groovyls"
 local bin_name = "groovy-language-server-all.jar"
 
 configs[name] = {
-  language_name = "Java",
   default_config = {
     cmd = {
       "java",
@@ -16,6 +15,7 @@ configs[name] = {
     root_dir = util.root_pattern ".git" or vim.loop.os_homedir(),
   },
   docs = {
+    language_name = "Java",
     description = [[
 https://github.com/prominic/groovy-language-server.git
 

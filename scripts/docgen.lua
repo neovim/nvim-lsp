@@ -103,8 +103,8 @@ local function make_lsp_sections()
       body = "",
     }
 
-    if template_def.language_name ~= nil then
-      params.language_name = string.format("%s (%s)", template_def.language_name, template_name)
+    if docs and docs.language_name then
+      params.language_name = string.format("%s (%s)", docs.language_name, template_name)
     end
 
     params.body = make_section(0, "\n\n", {

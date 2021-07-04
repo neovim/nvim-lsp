@@ -5,13 +5,13 @@ local server_name = "sorbet"
 local bin_name = "srb"
 
 configs[server_name] = {
-  language_name = "Ruby",
   default_config = {
     cmd = { bin_name, "tc", "--lsp" },
     filetypes = { "ruby" },
     root_dir = util.root_pattern("Gemfile", ".git"),
   },
   docs = {
+    language_name = "Ruby",
     description = [[
 https://sorbet.org
 

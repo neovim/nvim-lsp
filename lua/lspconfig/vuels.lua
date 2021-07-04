@@ -5,7 +5,6 @@ local server_name = "vuels"
 local bin_name = "vls"
 
 configs[server_name] = {
-  language_name = "Vue",
   default_config = {
     cmd = { bin_name },
     filetypes = { "vue" },
@@ -50,6 +49,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "Vue",
     package_json = "https://raw.githubusercontent.com/vuejs/vetur/master/package.json",
     description = [[
 https://github.com/vuejs/vetur/tree/master/server

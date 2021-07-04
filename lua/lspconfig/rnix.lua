@@ -4,7 +4,6 @@ local util = require "lspconfig/util"
 local name = "rnix"
 
 configs[name] = {
-  language_name = "Nix",
   default_config = {
     cmd = { "rnix-lsp" },
     filetypes = { "nix" },
@@ -15,6 +14,7 @@ configs[name] = {
     init_options = {},
   },
   docs = {
+    language_name = "Nix",
     description = [[
 https://github.com/nix-community/rnix-lsp
 

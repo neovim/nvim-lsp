@@ -12,7 +12,6 @@ local root_files = {
 }
 
 configs[server_name] = {
-  language_name = "Puppet",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "puppet" },
@@ -21,6 +20,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "Puppet",
     description = [[
 LSP server for Puppet.
 

@@ -70,7 +70,6 @@ local function fix_zero_version(workspace_edit)
 end
 
 configs[server_name] = {
-  language_name = "Java",
   default_config = {
     cmd = cmd,
     cmd_env = {
@@ -128,6 +127,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "Java",
     package_json = "https://raw.githubusercontent.com/redhat-developer/vscode-java/master/package.json",
     description = [[
 

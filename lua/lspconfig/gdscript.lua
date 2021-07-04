@@ -2,13 +2,13 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.gdscript = {
-  language_name = "GDScript",
   default_config = {
     cmd = { "nc", "localhost", "6008" },
     filetypes = { "gd", "gdscript", "gdscript3" },
     root_dir = util.root_pattern("project.godot", ".git"),
   },
   docs = {
+    language_name = "GDScript",
     description = [[
 https://github.com/godotengine/godot
 

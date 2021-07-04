@@ -4,13 +4,13 @@ local util = require "lspconfig/util"
 local server_name = "svls"
 
 configs[server_name] = {
-  language_name = "Verilog",
   default_config = {
     cmd = { "svls" },
     filetypes = { "verilog", "systemverilog" },
     root_dir = util.root_pattern ".git",
   },
   docs = {
+    language_name = "Verilog",
     description = [[
       https://github.com/dalance/svls
       Language server for verilog and SystemVerilog

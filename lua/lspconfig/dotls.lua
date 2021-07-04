@@ -9,7 +9,6 @@ local root_files = {
 }
 
 configs[server_name] = {
-  language_name = "DOT",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "dot" },
@@ -18,6 +17,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "DOT",
     description = [[
 https://github.com/nikeee/dot-language-server
 

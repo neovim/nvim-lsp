@@ -5,7 +5,6 @@ local server_name = "jsonls"
 local bin_name = "vscode-json-language-server"
 
 configs[server_name] = {
-  language_name = "JSON",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "json" },
@@ -15,6 +14,7 @@ configs[server_name] = {
     root_dir = util.root_pattern(".git", vim.fn.getcwd()),
   },
   docs = {
+    language_name = "JSON",
     -- this language server config is in VSCode built-in package.json
     package_json = "https://raw.githubusercontent.com/microsoft/vscode/master/extensions/json-language-features/package.json",
     description = [[

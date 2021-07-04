@@ -8,7 +8,6 @@ if vim.fn.has "win32" == 1 then
 end
 
 configs[server_name] = {
-  language_name = "Ada",
   default_config = {
     cmd = { bin_name },
     filetypes = { "ada" },
@@ -16,6 +15,7 @@ configs[server_name] = {
     root_dir = util.root_pattern("Makefile", ".git"),
   },
   docs = {
+    language_name = "Ada",
     package_json = "https://raw.githubusercontent.com/AdaCore/ada_language_server/master/integration/vscode/ada/package.json",
     description = [[
 https://github.com/AdaCore/ada_language_server

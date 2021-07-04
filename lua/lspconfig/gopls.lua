@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.gopls = {
-  language_name = "Go",
   default_config = {
     cmd = { "gopls" },
     filetypes = { "go", "gomod" },
@@ -11,6 +10,7 @@ configs.gopls = {
   -- on_new_config = function(new_config) end;
   -- on_attach = function(client, bufnr) end;
   docs = {
+    language_name = "Go",
     description = [[
 https://github.com/golang/tools/tree/master/gopls
 

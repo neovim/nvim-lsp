@@ -6,7 +6,6 @@ local server_name = "codeqlls"
 local root_pattern = util.root_pattern "qlpack.yml"
 
 configs[server_name] = {
-  language_name = "CodeQL",
   default_config = {
     cmd = { "codeql", "execute", "language-server", "--check-errors", "ON_CHANGE", "-q" },
     filetypes = { "ql" },
@@ -27,6 +26,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "CodeQL",
     description = [[
 Reference:
 https://help.semmle.com/codeql/codeql-cli.html

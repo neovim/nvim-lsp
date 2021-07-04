@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.cmake = {
-  language_name = "CMake",
   default_config = {
     cmd = { "cmake-language-server" },
     filetypes = { "cmake" },
@@ -14,6 +13,7 @@ configs.cmake = {
     },
   },
   docs = {
+    language_name = "CMake",
     description = [[
 https://github.com/regen100/cmake-language-server
 

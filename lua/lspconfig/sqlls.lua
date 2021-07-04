@@ -6,7 +6,6 @@ local server_name = "sqlls"
 local root_pattern = util.root_pattern ".sqllsrc.json"
 
 configs[server_name] = {
-  language_name = "SQL",
   default_config = {
     filetypes = { "sql", "mysql" },
     root_dir = function(fname)
@@ -15,6 +14,7 @@ configs[server_name] = {
     settings = {},
   },
   docs = {
+    language_name = "SQL",
     description = [[
 https://github.com/joe-re/sql-language-server
 

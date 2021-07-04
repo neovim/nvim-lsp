@@ -4,7 +4,6 @@ local util = require "lspconfig/util"
 local name = "sumneko_lua"
 
 configs[name] = {
-  language_name = "Lua",
   default_config = {
     filetypes = { "lua" },
     root_dir = function(fname)
@@ -14,6 +13,7 @@ configs[name] = {
     settings = { Lua = { telemetry = { enable = false } } },
   },
   docs = {
+    language_name = "Lua",
     package_json = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/package.json",
     description = [[
 https://github.com/sumneko/lua-language-server

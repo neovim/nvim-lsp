@@ -3,7 +3,6 @@ local util = require "lspconfig/util"
 local server_name = "omnisharp"
 
 configs[server_name] = {
-  language_name = "C#",
   default_config = {
     filetypes = { "cs", "vb" },
     root_dir = util.root_pattern("*.csproj", "*.sln"),
@@ -12,6 +11,7 @@ configs[server_name] = {
   -- on_new_config = function(new_config) end;
   -- on_attach = function(client, bufnr) end;
   docs = {
+    language_name = "C#",
     description = [[
 https://github.com/omnisharp/omnisharp-roslyn
 OmniSharp server based on Roslyn workspaces

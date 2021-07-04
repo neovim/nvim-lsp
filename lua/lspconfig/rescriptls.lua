@@ -4,7 +4,6 @@ local configs = require "lspconfig/configs"
 local name = "rescriptls"
 
 configs[name] = {
-  language_name = "ReScript",
   default_config = {
     cmd = {},
     filetypes = { "rescript" },
@@ -12,6 +11,7 @@ configs[name] = {
     settings = {},
   },
   docs = {
+    language_name = "ReScript",
     description = [[
 https://github.com/rescript-lang/rescript-vscode
 

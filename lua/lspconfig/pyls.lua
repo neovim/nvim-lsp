@@ -1,7 +1,6 @@
 local configs = require "lspconfig/configs"
 
 configs.pyls = {
-  language_name = "Python",
   default_config = {
     cmd = { "pyls" },
     filetypes = { "python" },
@@ -10,6 +9,7 @@ configs.pyls = {
     end,
   },
   docs = {
+    language_name = "Python",
     package_json = "https://raw.githubusercontent.com/palantir/python-language-server/develop/vscode-client/package.json",
     description = [[
 https://github.com/palantir/python-language-server

@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.fortls = {
-  language_name = "Fortan",
   default_config = {
     cmd = { "fortls" },
     filetypes = { "fortran" },
@@ -12,6 +11,7 @@ configs.fortls = {
     },
   },
   docs = {
+    language_name = "Fortan",
     package_json = "https://raw.githubusercontent.com/hansec/vscode-fortran-ls/master/package.json",
     description = [[
 https://github.com/hansec/fortran-language-server

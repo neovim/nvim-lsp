@@ -8,7 +8,6 @@ if vim.fn.has "win32" == 1 then
 end
 
 configs[server_name] = {
-  language_name = "VimScript",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "vim" },
@@ -30,6 +29,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "VimScript",
     description = [[
 https://github.com/iamcco/vim-language-server
 

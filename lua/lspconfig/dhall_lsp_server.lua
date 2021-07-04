@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.dhall_lsp_server = {
-  language_name = "Dhall",
   default_config = {
     cmd = { "dhall-lsp-server" },
     filetypes = { "dhall" },
@@ -20,6 +19,7 @@ cabal install dhall-lsp-server
 prebuilt binaries can be found [here](https://github.com/dhall-lang/dhall-haskell/releases).
 ]],
       default_config = {
+        language_name = "Dhall",
         root_dir = [[root_pattern(".git", vim.fn.getcwd())]],
       },
     },

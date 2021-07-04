@@ -5,7 +5,6 @@ local server_name = "efm"
 local bin_name = "efm-langserver"
 
 configs[server_name] = {
-  language_name = "Diagnostics",
   default_config = {
     cmd = { bin_name },
     root_dir = function(fname)
@@ -14,6 +13,7 @@ configs[server_name] = {
   },
 
   docs = {
+    language_name = "Diagnostics",
     description = [[
 https://github.com/mattn/efm-langserver
 

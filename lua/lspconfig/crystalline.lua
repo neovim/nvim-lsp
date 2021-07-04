@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.crystalline = {
-  language_name = "Crystal",
   default_config = {
     cmd = { "crystalline" },
     filetypes = { "crystal" },
@@ -11,6 +10,7 @@ configs.crystalline = {
     end,
   },
   docs = {
+    language_name = "Crystal",
     description = [[
 https://github.com/elbywan/crystalline
 

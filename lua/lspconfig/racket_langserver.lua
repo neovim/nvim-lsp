@@ -6,7 +6,6 @@ local root_files = {
 }
 
 configs.racket_langserver = {
-  language_name = "Racket",
   default_config = {
     cmd = { "racket", "--lib", "racket-langserver" },
     filetypes = { "racket", "scheme" },
@@ -15,6 +14,7 @@ configs.racket_langserver = {
     end,
   },
   docs = {
+    language_name = "Racket",
     description = [[
 [https://github.com/jeapostrophe/racket-langserver](https://github.com/jeapostrophe/racket-langserver)
 

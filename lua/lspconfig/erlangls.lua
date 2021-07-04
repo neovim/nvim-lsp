@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.erlangls = {
-  language_name = "Erlang",
   default_config = {
     cmd = { "erlang_ls" },
     filetypes = { "erlang" },
@@ -11,6 +10,7 @@ configs.erlangls = {
     end,
   },
   docs = {
+    language_name = "Erlang",
     description = [[
 https://erlang-ls.github.io
 

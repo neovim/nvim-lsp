@@ -6,7 +6,6 @@ if vim.fn.has "win32" == 1 then
   bin_name = bin_name .. ".bat"
 end
 configs.solargraph = {
-  language_name = "Ruby",
   default_config = {
     cmd = { bin_name, "stdio" },
     settings = {
@@ -18,6 +17,7 @@ configs.solargraph = {
     root_dir = util.root_pattern("Gemfile", ".git"),
   },
   docs = {
+    language_name = "Ruby",
     package_json = "https://raw.githubusercontent.com/castwide/vscode-solargraph/master/package.json",
     description = [[
 https://solargraph.org/

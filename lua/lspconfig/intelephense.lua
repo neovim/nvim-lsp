@@ -5,7 +5,6 @@ local server_name = "intelephense"
 local bin_name = "intelephense"
 
 configs[server_name] = {
-  language_name = "PHP",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "php" },
@@ -18,6 +17,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "PHP",
     description = [[
 https://intelephense.com/
 

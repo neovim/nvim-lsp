@@ -5,7 +5,6 @@ local server_name = "tailwindcss"
 local bin_name = "tailwindcss-language-server"
 
 configs[server_name] = {
-  language_name = "Tailwind",
   default_config = {
     cmd = { bin_name, "--stdio" },
     -- filetypes copied and adjusted from tailwindcss-intellisense
@@ -102,6 +101,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "Tailwind",
     description = [[
 https://github.com/tailwindlabs/tailwindcss-intellisense
 

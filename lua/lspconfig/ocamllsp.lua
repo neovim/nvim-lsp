@@ -20,7 +20,6 @@ local get_language_id = function(_, ftype)
 end
 
 configs.ocamllsp = {
-  language_name = "OCaml",
   default_config = {
     cmd = { "ocamllsp" },
     filetypes = filetypes,
@@ -28,6 +27,7 @@ configs.ocamllsp = {
     get_language_id = get_language_id,
   },
   docs = {
+    language_name = "OCaml",
     description = [[
 https://github.com/ocaml/ocaml-lsp
 

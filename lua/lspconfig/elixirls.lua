@@ -3,7 +3,6 @@ local util = require "lspconfig/util"
 
 local server_name = "elixirls"
 configs[server_name] = {
-  language_name = "Elexir",
   default_config = {
     filetypes = { "elixir", "eelixir" },
     root_dir = function(fname)
@@ -11,6 +10,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "Elexir",
     package_json = "https://raw.githubusercontent.com/JakeBecker/vscode-elixir-ls/master/package.json",
     description = [[
 https://github.com/elixir-lsp/elixir-ls

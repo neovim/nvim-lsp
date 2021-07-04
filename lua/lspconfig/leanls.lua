@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.leanls = {
-  language_name = "Lean",
   default_config = {
     cmd = { "lean", "--server" },
     filetypes = { "lean" },
@@ -19,6 +18,7 @@ configs.leanls = {
     end,
   },
   docs = {
+    language_name = "Lean",
     description = [[
 https://github.com/leanprover/lean4
 

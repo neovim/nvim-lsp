@@ -2,13 +2,13 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.sourcekit = {
-  language_name = "C like",
   default_config = {
     cmd = { "xcrun", "sourcekit-lsp" },
     filetypes = { "swift", "c", "cpp", "objective-c", "objective-cpp" },
     root_dir = util.root_pattern("Package.swift", ".git"),
   },
   docs = {
+    language_name = "C like",
     package_json = "https://raw.githubusercontent.com/apple/sourcekit-lsp/main/Editors/vscode/package.json",
     description = [[
 https://github.com/apple/sourcekit-lsp

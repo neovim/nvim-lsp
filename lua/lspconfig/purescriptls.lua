@@ -8,13 +8,13 @@ if vim.fn.has "win32" == 1 then
 end
 
 configs[server_name] = {
-  language_name = "PureScript",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "purescript" },
     root_dir = util.root_pattern("spago.dhall", "bower.json"),
   },
   docs = {
+    language_name = "PureScript",
     package_json = "https://raw.githubusercontent.com/nwolverson/vscode-ide-purescript/master/package.json",
     description = [[
 https://github.com/nwolverson/purescript-language-server

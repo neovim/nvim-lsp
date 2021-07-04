@@ -2,13 +2,13 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.clojure_lsp = {
-  language_name = "Clojure",
   default_config = {
     cmd = { "clojure-lsp" },
     filetypes = { "clojure", "edn" },
     root_dir = util.root_pattern("project.clj", "deps.edn", ".git"),
   },
   docs = {
+    language_name = "Clojure",
     description = [[
 https://github.com/snoe/clojure-lsp
 

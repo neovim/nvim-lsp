@@ -28,7 +28,6 @@ local analysis_server_snapshot_path = function()
 end
 
 configs[server_name] = {
-  language_name = "Dart",
   default_config = {
     cmd = { bin_name, analysis_server_snapshot_path(), "--lsp" },
     filetypes = { "dart" },
@@ -42,6 +41,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "Dart",
     package_json = "https://raw.githubusercontent.com/Dart-Code/Dart-Code/master/package.json",
     description = [[
 https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server/tool/lsp_spec

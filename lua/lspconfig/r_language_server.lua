@@ -2,7 +2,6 @@ local util = require "lspconfig/util"
 local configs = require "lspconfig/configs"
 
 configs.r_language_server = {
-  language_name = "R",
   default_config = {
     cmd = { "R", "--slave", "-e", "languageserver::run()" },
     filetypes = { "r", "rmd" },
@@ -12,6 +11,7 @@ configs.r_language_server = {
     log_level = vim.lsp.protocol.MessageType.Warning,
   },
   docs = {
+    language_name = "R",
     package_json = "https://raw.githubusercontent.com/REditorSupport/vscode-r-lsp/master/package.json",
     description = [[
     [languageserver](https://github.com/REditorSupport/languageserver) is an

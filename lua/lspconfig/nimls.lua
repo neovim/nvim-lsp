@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.nimls = {
-  language_name = "Nim",
   default_config = {
     cmd = { "nimlsp" },
     filetypes = { "nim" },
@@ -11,6 +10,7 @@ configs.nimls = {
     end,
   },
   docs = {
+    language_name = "Nim",
     package_json = "https://raw.githubusercontent.com/pragmagic/vscode-nim/master/package.json",
     description = [[
 https://github.com/PMunch/nimlsp

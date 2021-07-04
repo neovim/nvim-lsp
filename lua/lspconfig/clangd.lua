@@ -33,7 +33,6 @@ local default_capabilities = vim.tbl_deep_extend(
 )
 
 configs.clangd = {
-  language_name = "C like",
   default_config = {
     cmd = { "clangd", "--background-index" },
     filetypes = { "c", "cpp", "objc", "objcpp" },
@@ -57,6 +56,7 @@ configs.clangd = {
     },
   },
   docs = {
+    language_name = "C like",
     description = [[
 https://clangd.llvm.org/installation.html
 

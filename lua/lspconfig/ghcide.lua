@@ -2,7 +2,6 @@ local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
 configs.ghcide = {
-  language_name = "Haskell",
   default_config = {
     cmd = { "ghcide", "--lsp" },
     filetypes = { "haskell", "lhaskell" },
@@ -10,6 +9,7 @@ configs.ghcide = {
   },
 
   docs = {
+    language_name = "Haskell",
     description = [[
 https://github.com/digital-asset/ghcide
 

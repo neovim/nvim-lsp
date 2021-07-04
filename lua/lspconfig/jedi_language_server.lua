@@ -1,7 +1,6 @@
 local configs = require "lspconfig/configs"
 
 configs.jedi_language_server = {
-  language_name = "Python",
   default_config = {
     cmd = { "jedi-language-server" },
     filetypes = { "python" },
@@ -10,6 +9,7 @@ configs.jedi_language_server = {
     end,
   },
   docs = {
+    language_name = "Python",
     description = [[
 https://github.com/pappasam/jedi-language-server
 

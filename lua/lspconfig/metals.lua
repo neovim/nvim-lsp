@@ -4,7 +4,6 @@ local server_name = "metals"
 local bin_name = "metals"
 
 configs[server_name] = {
-  language_name = "Scala",
   default_config = {
     cmd = { bin_name },
     filetypes = { "scala" },
@@ -19,6 +18,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "Scala",
     description = [[
 https://scalameta.org/metals/
 

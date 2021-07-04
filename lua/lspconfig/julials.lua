@@ -21,7 +21,6 @@ local cmd = {
 }
 
 configs.julials = {
-  language_name = "Julia",
   default_config = {
     cmd = cmd,
     on_new_config = function(new_config, _)
@@ -36,6 +35,7 @@ configs.julials = {
     end,
   },
   docs = {
+    language_name = "Julia",
     package_json = "https://raw.githubusercontent.com/julia-vscode/julia-vscode/master/package.json",
     description = [[
 https://github.com/julia-vscode/julia-vscode

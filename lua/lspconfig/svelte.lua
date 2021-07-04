@@ -5,13 +5,13 @@ local server_name = "svelte"
 local bin_name = "svelteserver"
 
 configs[server_name] = {
-  language_name = "Svelte",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "svelte" },
     root_dir = util.root_pattern("package.json", ".git"),
   },
   docs = {
+    language_name = "Svelte",
     description = [[
 https://github.com/sveltejs/language-tools/tree/master/packages/language-server
 

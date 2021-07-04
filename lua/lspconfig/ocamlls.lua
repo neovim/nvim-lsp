@@ -5,13 +5,13 @@ local server_name = "ocamlls"
 local bin_name = "ocaml-language-server"
 
 configs[server_name] = {
-  language_name = "OCaml",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "ocaml", "reason" },
     root_dir = util.root_pattern("*.opam", "esy.json", "package.json"),
   },
   docs = {
+    language_name = "OCaml",
     description = [[
 https://github.com/ocaml-lsp/ocaml-language-server
 

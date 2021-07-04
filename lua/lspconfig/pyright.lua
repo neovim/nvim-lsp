@@ -24,7 +24,6 @@ local function organize_imports()
 end
 
 configs[server_name] = {
-  language_name = "Python",
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "python" },
@@ -48,6 +47,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "Python",
     package_json = "https://raw.githubusercontent.com/microsoft/pyright/master/packages/vscode-pyright/package.json",
     description = [[
 https://github.com/microsoft/pyright
