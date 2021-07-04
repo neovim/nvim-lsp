@@ -1,4 +1,4 @@
 .luacheckcache
 neovim
-docs/languages/*.md
-docs/languages/!index.md
+docs/configurations/*.md
+docs/configurations/!index.md

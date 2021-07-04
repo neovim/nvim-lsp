@@ -284,7 +284,7 @@ end
 
 local function generate_readme(template_file, params)
   for _, v in ipairs(params.lsp_server_details) do
-    local writer = io.open("docs/languages/" .. v.name .. ".md", "w")
+    local writer = io.open("docs/configurations/" .. v.name .. ".md", "w")
     writer:write(v.template)
     writer:close()
   end
