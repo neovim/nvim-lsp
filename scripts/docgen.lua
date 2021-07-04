@@ -66,7 +66,7 @@ local function sorted_map_table(t, func)
 end
 
 local lsp_section_template = [[
-# {{template_name}}
+# {{language_name}}
 
 {{preamble}}
 
@@ -99,12 +99,16 @@ local function make_lsp_sections()
     local docs = template_def.docs
 
     local params = {
-      language_name = template_name, -- FIXME: Needs a real name
+      language_name = template_name,
       template_name = template_name,
       settings = "",
       preamble = "",
       body = "",
     }
+
+    if template_def.language_name ~= nil then
+      params.language_name = string.format("%s (%s)", template_def.language_name, template_name)
+    end
 
     params.body = make_section(2, "\n\n", {
       function()

@@ -1,6 +1,7 @@
 local configs = require "lspconfig/configs"
 
 configs.pyls = {
+  language_name = "Python",
   default_config = {
     cmd = { "pyls" },
     filetypes = { "python" },
