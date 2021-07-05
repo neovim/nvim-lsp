@@ -1,4 +1,4 @@
 .luacheckcache
 neovim
 docs/configurations/*.md
-docs/configurations/!index.md
+!docs/configurations/index.md
