@@ -281,11 +281,19 @@ local function make_settings_section(docs, template_name, combined)
                 return
               end
 
+              local prefixed = function(s, v)
+                if combined then
+                  return string.format("%s: %s", s, v)
+                end
+
+                return string.format("* *%s*: %s", s, v)
+              end
+
               local tpl = combined and lsp_setting_combined_template or lsp_setting_template
               local body = ""
               local footer = make_section(1, "\n\n", {
-                { v.default and "Default: " .. tick(inspect(v.default, { newline = "", indent = "" })) },
-                { v.items and "Array items: " .. tick(inspect(v.items, { newline = "", indent = "" })) },
+                { v.default and prefixed("Default", tick(inspect(v.default, { newline = "", indent = "" }))) },
+                { v.items and prefixed("Array items", tick(inspect(v.items, { newline = "", indent = "" }))) },
                 { excape_markdown_punctuations(v.description) },
               })
 
@@ -302,13 +310,13 @@ local function make_settings_section(docs, template_name, combined)
                   end
                 })
               else
-                body = make_section(2, "\n\n", {
+                body = make_section(2, "\n", {
                   function()
                     if v.enum then
                       return tick("enum " .. inspect(v.enum))
                     end
                     if v.type then
-                      return "Type: " .. tick(table.concat(tbl_flatten { v.type }, "|"))
+                      return prefixed("Type", tick(table.concat(tbl_flatten { v.type }, "|")))
                     end
                   end,
                 })
