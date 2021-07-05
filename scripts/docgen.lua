@@ -82,14 +82,45 @@ require'lspconfig'.{{template_name}}.setup{}
 
 ]]
 
+local lsp_section_combined_template = [[
+# {{template_name}}
+
+{{preamble}}
+
+**Snippet to enable the language server:**
+
+```lua
+require'lspconfig'.{{template_name}}.setup{}
+```
+
+{{body}}
+
+{{settings}}
+
+]]
+
 local lsp_commands_template = [[
 ### Commands
 
 {{commands}}
 ]]
 
+local lsp_commands_combined_template = [[
+**Commands:**
+
+{{commands}}
+]]
+
 local lsp_default_values_template = [[
 ### Default values
+
+```lua
+{{defaults}}
+```
+]]
+
+local lsp_default_values_combined_template = [[
+**Default values:**
 
 ```lua
 {{defaults}}
@@ -104,9 +135,24 @@ This server accepts configuration via the `settings` key.
 {{settings}}
 ]]
 
+local lsp_settings_combined_template = [[
+This server accepts configuration via the `settings` key.
+
+<details>
+<summary>Available settings:</summary>
+
+{{settings}}
+
+</details>
+]]
+
 local lsp_setting_template = [[
 ### `{{setting}}`
 
+{{body}}
+]]
+
+local lsp_setting_combined_template = [[
 {{body}}
 ]]
 
@@ -118,7 +164,7 @@ local function require_all_configs()
   end
 end
 
-local function make_commands_section(template_def)
+local function make_commands_section(template_def, combined)
   if not template_def.commands then
     return ""
   end
@@ -135,12 +181,13 @@ local function make_commands_section(template_def)
     return string.format("- %s", name)
   end)
 
-  return template(lsp_commands_template, {
+  local tpl = combined and lsp_commands_combined_template or lsp_commands_template
+  return template(tpl, {
     commands = make_section(0, "\n", markdown)
   })
 end
 
-local function make_default_values_section(template_def, docs)
+local function make_default_values_section(template_def, docs, combined)
   if not template_def.default_config then
     return ""
   end
@@ -170,7 +217,8 @@ local function make_default_values_section(template_def, docs)
     return indent(0, string.format("%s = %s", k, description or inspect(v)))
   end)
 
-  return template(lsp_default_values_template, {
+  local tpl = combined and lsp_default_values_combined_template or lsp_default_values_template
+  return template(tpl, {
     defaults = make_section(0, "\n", markdown)
   })
 end
@@ -187,7 +235,7 @@ local function make_preamble_section(docs)
   return table.concat(preamble_parts, "\n")
 end
 
-local function make_settings_section(docs, template_name)
+local function make_settings_section(docs, template_name, combined)
   local tempdir = os.getenv "DOCGEN_TEMPDIR" or uv.fs_mkdtemp "/tmp/nvim-lsp.XXXXXX"
 
   local settings_parts = make_parts {
@@ -233,8 +281,27 @@ local function make_settings_section(docs, template_name)
                 return
               end
 
-              return template(lsp_setting_template, {
-                setting = k,
+              local tpl = combined and lsp_setting_combined_template or lsp_setting_template
+              local body = ""
+              local footer = make_section(1, "\n\n", {
+                { v.default and "Default: " .. tick(inspect(v.default, { newline = "", indent = "" })) },
+                { v.items and "Array items: " .. tick(inspect(v.items, { newline = "", indent = "" })) },
+                { excape_markdown_punctuations(v.description) },
+              })
+
+              if combined then
+                body = "- " .. make_section(2, ": ", {
+                  bold(tick(k)),
+                  function()
+                    if v.enum then
+                      return tick("enum " .. inspect(v.enum))
+                    end
+                    if v.type then
+                      return tick(table.concat(tbl_flatten { v.type }, "|"))
+                    end
+                  end
+                })
+              else
                 body = make_section(2, "\n\n", {
                   function()
                     if v.enum then
@@ -244,15 +311,18 @@ local function make_settings_section(docs, template_name)
                       return "Type: " .. tick(table.concat(tbl_flatten { v.type }, "|"))
                     end
                   end,
-                  { v.default and "Default: " .. tick(inspect(v.default, { newline = "", indent = "" })) },
-                  { v.items and "Array items: " .. tick(inspect(v.items, { newline = "", indent = "" })) },
-                  { excape_markdown_punctuations(v.description) },
-                }),
+                })
+              end
+
+              return template(tpl, {
+                setting = k,
+                body = make_section(0, "\n", { body, "", footer })
               })
             end)
 
             -- The outer section.
-            return template(lsp_settings_template, {
+            local tpl = combined and lsp_settings_combined_template or lsp_settings_template
+            return template(tpl, {
               settings = make_section(0, "\n", markdown)
             })
           end,
@@ -268,7 +338,7 @@ local function make_settings_section(docs, template_name)
   return table.concat(settings_parts, "\n")
 end
 
-local function make_lsp_sections()
+local function make_lsp_sections(combined)
   return sorted_map_table(configs, function(template_name, template_object)
     local template_def = template_object.document_config
     local docs = template_def.docs
@@ -286,18 +356,19 @@ local function make_lsp_sections()
     end
 
     params.body = make_section(0, "\n", {
-      make_commands_section(template_def),
-      make_default_values_section(template_def, docs),
+      make_commands_section(template_def, combined),
+      make_default_values_section(template_def, docs, combined),
     })
 
     if docs then
       params.preamble = make_preamble_section(docs)
-      params.settings = make_settings_section(docs, template_name)
+      params.settings = make_settings_section(docs, template_name, combined)
     end
 
+    local tpl = combined and lsp_section_combined_template or lsp_section_template
     return {
       name = params.template_name,
-      template = template(lsp_section_template, params)
+      template = template(tpl, params)
     }
   end)
 end
@@ -319,18 +390,18 @@ local function generate_readme(template_file, params)
     writer:close()
   end
 
-  local original = make_section(0, "", map_list(params.lsp_server_details, function(p)
+  local combined = make_section(0, "", map_list(params.lsp_server_details_combined, function(p)
     return p.template
   end))
 
   vim.validate {
-    lsp_server_details = { original, "s" },
+    lsp_server_details = { combined, "s" },
     implemented_servers_list = { params.implemented_servers_list, "s" },
   }
 
   local input_template = readfile(template_file)
   local readme_data = template(input_template, {
-    lsp_server_details = original,
+    lsp_server_details = combined,
     implemented_servers_list = params.implemented_servers_list
   })
 
@@ -343,6 +414,7 @@ require_all_configs()
 generate_readme("scripts/README_template.md", {
   implemented_servers_list = make_implemented_servers_list(),
   lsp_server_details = make_lsp_sections(),
+  lsp_server_details_combined = make_lsp_sections(true),
 })
 
 -- vim:et ts=2 sw=2
