@@ -25,8 +25,7 @@ require'lspconfig'.zeta_note.setup{
 }
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern(".zeta.toml")]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

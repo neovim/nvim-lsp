@@ -41,8 +41,7 @@ cs bootstrap \
   -o /usr/local/bin/metals -f
 ```
 ]],
-    default_config = {
-      root_dir = [[util.root_pattern("build.sbt", "build.sc", "build.gradle", "pom.xml")]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

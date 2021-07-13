@@ -18,7 +18,7 @@ function M._root._setup()
   M._root.commands = {
     LspInfo = {
       function()
-        require "lspconfig/lspinfo"()
+        require "lspconfig/ui/lspinfo"()
       end,
       "-nargs=0",
       description = "`:LspInfo` Displays attached, active, and configured language servers",

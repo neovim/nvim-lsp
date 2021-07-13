@@ -42,8 +42,7 @@ require'lspconfig'.stylelint_lsp.setup{
 }
 ```
 ]],
-    default_config = {
-      root_dir = [[ root_pattern('.stylelintrc', 'package.json') ]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

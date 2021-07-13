@@ -1,6 +1,14 @@
 local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
+local root_files = {
+  "pyproject.toml",
+  "setup.py",
+  "setup.cfg",
+  "requirements.txt",
+  "Pipfile",
+}
+
 local name = "pyls_ms"
 
 configs[name] = {
@@ -8,7 +16,7 @@ configs[name] = {
   default_config = {
     filetypes = { "python" },
     root_dir = function(fname)
-      return util.find_git_ancestor(fname) or vim.loop.os_homedir()
+      return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
     end,
     settings = {
       python = {
@@ -61,9 +69,6 @@ Version = "3.8"
 This server accepts configuration via the `settings` key.
 
     ]],
-    default_config = {
-      root_dir = "vim's starting directory",
-    },
   },
 }
 

@@ -33,4 +33,5 @@ This is automatically done by plugins such as [PhilT/vim-fsharp](https://github.
     ]],
   },
 }
+
 -- vim:et ts=2 sw=2

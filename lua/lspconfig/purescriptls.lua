@@ -22,9 +22,7 @@ https://github.com/nwolverson/purescript-language-server
 npm install -g purescript-language-server
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern("spago.dhall, bower.json")]],
-    },
   },
 }
+
 -- vim:et ts=2 sw=2

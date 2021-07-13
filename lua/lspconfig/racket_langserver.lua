@@ -1,17 +1,11 @@
 local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
-local root_files = {
-  ".git",
-}
-
 configs.racket_langserver = {
   default_config = {
     cmd = { "racket", "--lib", "racket-langserver" },
     filetypes = { "racket", "scheme" },
-    root_dir = function(filename)
-      return util.root_pattern(unpack(root_files))(filename) or util.path.dirname(filename)
-    end,
+    root_dir = util.find_git_ancestor,
   },
   docs = {
     description = [[
@@ -25,3 +19,5 @@ Install via `raco`: `raco pkg install racket-langserver`
 ]],
   },
 }
+
+-- vim:et ts=2 sw=2

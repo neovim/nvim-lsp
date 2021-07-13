@@ -38,8 +38,7 @@ opam pin add ocaml-lsp-server https://github.com/ocaml/ocaml-lsp.git
 opam install ocaml-lsp-server
 ```
     ]],
-    default_config = {
-      root_dir = [[root_pattern("*.opam", "esy.json", "package.json", ".git")]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

@@ -4,15 +4,11 @@ local util = require "lspconfig/util"
 local server_name = "cssls"
 local bin_name = "vscode-css-language-server"
 
-local root_pattern = util.root_pattern "package.json"
-
 configs[server_name] = {
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "css", "scss", "less" },
-    root_dir = function(fname)
-      return root_pattern(fname) or vim.loop.os_homedir()
-    end,
+    root_dir = util.root_pattern "package.json",
     settings = {
       css = { validate = true },
       scss = { validate = true },
@@ -42,9 +38,6 @@ require'lspconfig'.cssls.setup {
 }
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern("package.json")]],
-    },
   },
 }
 

@@ -6,7 +6,7 @@ configs.leanls = {
     cmd = { "lean", "--server" },
     filetypes = { "lean" },
     root_dir = function(fname)
-      return util.root_pattern "leanpkg.toml"(fname) or util.find_git_ancestor(fname) or util.path.dirname(fname)
+      return util.root_pattern "leanpkg.toml"(fname) or util.find_git_ancestor(fname)
     end,
     on_new_config = function(config, root)
       if not util.path.is_file(root .. "/leanpkg.toml") then
@@ -27,9 +27,6 @@ Lean installation instructions can be found
 The Lean 4 language server is built-in with a Lean 4 install
 (and can be manually run with, e.g., `lean --server`).
     ]],
-    default_config = {
-      root_dir = [[root_pattern("leanpkg.toml") or root_pattern(".git") or path.dirname]],
-    },
   },
 }
 -- vim:et ts=2 sw=2

@@ -10,9 +10,7 @@ configs.perlpls = {
       },
     },
     filetypes = { "perl" },
-    root_dir = function(filename)
-      return util.root_pattern ".git"(filename) or util.path.dirname(filename)
-    end,
+    root_dir = util.find_git_ancestor,
   },
   docs = {
     package_json = "https://raw.githubusercontent.com/FractalBoy/perl-language-server/master/client/package.json",
@@ -24,9 +22,7 @@ https://metacpan.org/pod/PLS
 
 To use the language server, ensure that you have PLS installed and that it is in your path
 ]],
-    default_config = {
-      root_dir = "vim's starting directory",
-    },
   },
 }
+
 -- vim:et ts=2 sw=2

@@ -20,3 +20,5 @@ Point `cmd` to `lang_server_linux.sh` or the equivalent script for macOS/Windows
 ]],
   },
 }
+
+-- vim:et ts=2 sw=2

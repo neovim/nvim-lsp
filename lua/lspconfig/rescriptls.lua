@@ -43,3 +43,5 @@ Take a look at [here](https://github.com/rescript-lang/rescript-vscode#use-with-
 ]],
   },
 }
+
+-- vim:et ts=2 sw=2

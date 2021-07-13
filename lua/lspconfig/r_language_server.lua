@@ -5,9 +5,7 @@ configs.r_language_server = {
   default_config = {
     cmd = { "R", "--slave", "-e", "languageserver::run()" },
     filetypes = { "r", "rmd" },
-    root_dir = function(fname)
-      return util.find_git_ancestor(fname) or vim.loop.os_homedir()
-    end,
+    root_dir = util.find_git_ancestor,
     log_level = vim.lsp.protocol.MessageType.Warning,
   },
   docs = {
@@ -23,8 +21,7 @@ configs.r_language_server = {
     install.packages("languageserver")
     ```
     ]],
-    default_config = {
-      root_dir = [[root_pattern(".git") or os_homedir]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

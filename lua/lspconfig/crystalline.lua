@@ -6,7 +6,7 @@ configs.crystalline = {
     cmd = { "crystalline" },
     filetypes = { "crystal" },
     root_dir = function(fname)
-      return util.root_pattern "shard.yml"(fname) or util.find_git_ancestor(fname) or util.path.dirname(fname)
+      return util.root_pattern "shard.yml"(fname) or util.find_git_ancestor(fname)
     end,
   },
   docs = {
@@ -15,8 +15,7 @@ https://github.com/elbywan/crystalline
 
 Crystal language server.
 ]],
-    default_config = {
-      root_dir = [[root_pattern('shard.yml', '.git') or dirname]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

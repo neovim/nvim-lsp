@@ -51,7 +51,6 @@ configs.kotlin_language_server = {
     https://github.com/fwcd/kotlin-language-server
     ]],
     default_config = {
-      root_dir = [[root_pattern("settings.gradle")]],
       cmd = { "kotlin-language-server" },
       capabilities = [[
       smart code completion,

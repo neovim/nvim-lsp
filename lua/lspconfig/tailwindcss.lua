@@ -126,3 +126,5 @@ https://aur.archlinux.org/packages/tailwindcss-language-server/
     },
   },
 }
+
+-- vim:et ts=2

@@ -15,9 +15,7 @@ https://github.com/hashicorp/terraform-ls
 Terraform language server
 Download a released binary from https://github.com/hashicorp/terraform-ls/releases.
 ]],
-    default_config = {
-      root_dir = [[root_pattern(".terraform", ".git")]],
-    },
   },
 }
+
 -- vim:et ts=2 sw=2

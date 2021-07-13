@@ -26,10 +26,6 @@ https://github.com/haskell/haskell-language-server
 
 Haskell Language Server
         ]],
-
-    default_config = {
-      root_dir = [[root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml")]],
-    },
   },
 }
 

@@ -6,7 +6,7 @@ configs.lean3ls = {
     cmd = { "lean-language-server", "--stdio", "--", "-M", "4096", "-T", "100000" },
     filetypes = { "lean3" },
     root_dir = function(fname)
-      return util.root_pattern "leanpkg.toml"(fname) or util.find_git_ancestor(fname) or util.path.dirname(fname)
+      return util.root_pattern "leanpkg.toml"(fname) or util.find_git_ancestor(fname)
     end,
     on_new_config = function(config, root)
       if not util.path.is_file(root .. "/leanpkg.toml") then
@@ -29,9 +29,7 @@ Once Lean is installed, you can install the Lean 3 language server by running
 npm install -g lean-language-server
 ```
     ]],
-    default_config = {
-      root_dir = [[root_pattern("leanpkg.toml") or root_pattern(".git") or path.dirname]],
-    },
   },
 }
+
 -- vim:et ts=2 sw=2

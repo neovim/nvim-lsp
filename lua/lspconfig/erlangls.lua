@@ -5,9 +5,7 @@ configs.erlangls = {
   default_config = {
     cmd = { "erlang_ls" },
     filetypes = { "erlang" },
-    root_dir = function(fname)
-      return util.root_pattern("rebar.config", "erlang.mk", ".git")(fname) or util.path.dirname(fname)
-    end,
+    root_dir = util.root_pattern("rebar.config", "erlang.mk", ".git"),
   },
   docs = {
     description = [[
@@ -24,8 +22,7 @@ Installation requirements:
     - [Erlang OTP 21+](https://github.com/erlang/otp)
     - [rebar3 3.9.1+](https://github.com/erlang/rebar3)
 ]],
-    default_config = {
-      root_dir = [[root_pattern('rebar.config', 'erlang.mk', '.git') or util.path.dirname(fname)]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

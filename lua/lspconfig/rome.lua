@@ -16,7 +16,6 @@ configs.rome = {
       return util.find_package_json_ancestor(fname)
         or util.find_node_modules_ancestor(fname)
         or util.find_git_ancestor(fname)
-        or util.path.dirname(fname)
     end,
   },
   docs = {
@@ -29,8 +28,7 @@ Language server for the Rome Frontend Toolchain.
 npm install [-g] rome
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern('package.json', 'node_modules', '.git') or dirname]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

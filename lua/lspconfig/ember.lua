@@ -20,9 +20,6 @@ https://github.com/lifeart/ember-language-server
 npm install -g @lifeart/ember-language-server
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern("ember-cli-build.js", ".git")]],
-    },
   },
 }
 

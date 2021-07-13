@@ -12,7 +12,7 @@ configs[name] = {
       bin_name,
     },
     filetypes = { "groovy" },
-    root_dir = util.root_pattern ".git" or vim.loop.os_homedir(),
+    root_dir = util.root_pattern ".git",
   },
   docs = {
     description = [[
@@ -40,8 +40,6 @@ require'lspconfig'.groovyls.setup{
         "-jar",
         bin_name,
       },
-      filetypes = { "groovy" },
-      root_dir = [[root_pattern(".git") or vim.loop.os_homedir()]],
     },
   },
 }
