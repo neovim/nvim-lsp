@@ -22,9 +22,6 @@ https://github.com/mads-hartmann/bash-language-server
 
 Language server for bash, written using tree sitter in typescript.
 ]],
-    default_config = {
-      root_dir = "vim's starting directory",
-    },
   },
 }
 

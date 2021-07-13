@@ -31,7 +31,9 @@ configs[server_name] = {
   default_config = {
     cmd = { bin_name, analysis_server_snapshot_path(), "--lsp" },
     filetypes = { "dart" },
-    root_dir = util.root_pattern "pubspec.yaml",
+    root_dir = function(fname)
+      return util.root_pattern "pubspec.yaml"(fname) or util.path.dirname(fname)
+    end,
     init_options = {
       onlyAnalyzeProjectsWithOpenFiles = false,
       suggestFromUnimportedLibraries = true,
@@ -47,9 +49,6 @@ https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server/tool/lsp_spec
 
 Language server for dart.
 ]],
-    default_config = {
-      root_dir = [[root_pattern("pubspec.yaml")]],
-    },
   },
 }
 -- vim:et ts=2 sw=2

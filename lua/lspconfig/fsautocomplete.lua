@@ -6,7 +6,9 @@ local server_name = "fsautocomplete"
 configs[server_name] = {
   default_config = {
     cmd = { "dotnet", "fsautocomplete", "--background-service-enabled" },
-    root_dir = util.root_pattern("*.sln", "*.fsproj", ".git"),
+    root_dir = function(fname)
+      return util.root_pattern("*.sln", "*.fsproj", ".git")(fname) or util.path.dirname(fname)
+    end,
     filetypes = { "fsharp" },
     init_options = {
       AutomaticWorkspaceInit = true,

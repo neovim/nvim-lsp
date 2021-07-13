@@ -36,9 +36,6 @@ lspconfig.ccls.setup {
 ```
 
 ]],
-    default_config = {
-      root_dir = [[root_pattern("compile_commands.json", "compile_flags.txt", ".git") or dirname]],
-    },
   },
 }
 -- vim:et ts=2 sw=2

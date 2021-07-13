@@ -12,8 +12,8 @@ configs[server_name] = {
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "dot" },
-    root_dir = function(filename)
-      return util.root_pattern(unpack(root_files))(filename) or util.path.dirname(filename)
+    root_dir = function(fname)
+      return util.root_pattern(unpack(root_files))(fname) or util.path.dirname(fname)
     end,
   },
   docs = {

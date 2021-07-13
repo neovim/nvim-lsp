@@ -6,7 +6,7 @@ configs[server_name] = {
   default_config = {
     filetypes = { "elixir", "eelixir" },
     root_dir = function(fname)
-      return util.root_pattern("mix.exs", ".git")(fname) or vim.loop.os_homedir()
+      return util.root_pattern("mix.exs", ".git")(fname) or util.path.dirname(fname)
     end,
   },
   docs = {
@@ -35,9 +35,6 @@ require'lspconfig'.elixirls.setup{
 }
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern("mix.exs", ".git") or vim.loop.os_homedir()]],
-    },
   },
 }
 

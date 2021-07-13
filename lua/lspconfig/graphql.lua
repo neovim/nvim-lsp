@@ -8,7 +8,9 @@ configs[server_name] = {
   default_config = {
     cmd = { bin_name, "server", "-m", "stream" },
     filetypes = { "graphql" },
-    root_dir = util.root_pattern(".git", ".graphqlrc"),
+    root_dir = function(fname)
+      return util.root_pattern(".git", ".graphqlrc")(fname) or util.path.dirname(fname)
+    end,
   },
 
   docs = {
@@ -21,9 +23,6 @@ https://github.com/graphql/graphiql/tree/main/packages/graphql-language-service-
 npm install -g graphql-language-service-cli
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern('.git', '.graphqlrc')]],
-    },
   },
 }
 

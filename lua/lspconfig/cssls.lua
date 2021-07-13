@@ -11,7 +11,7 @@ configs[server_name] = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "css", "scss", "less" },
     root_dir = function(fname)
-      return root_pattern(fname) or vim.loop.os_homedir()
+      return root_pattern(fname) or util.path.dirname(fname)
     end,
     settings = {
       css = { validate = true },
@@ -42,9 +42,6 @@ require'lspconfig'.cssls.setup {
 }
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern("package.json")]],
-    },
   },
 }
 

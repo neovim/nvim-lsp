@@ -12,7 +12,9 @@ configs[name] = {
       bin_name,
     },
     filetypes = { "groovy" },
-    root_dir = util.root_pattern ".git" or vim.loop.os_homedir(),
+    root_dir = function(fname)
+      return util.root_pattern ".git"(fname) or util.path.dirname(fname)
+    end,
   },
   docs = {
     description = [[

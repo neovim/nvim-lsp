@@ -12,7 +12,9 @@ configs[server_name] = {
     cmd = { bin_name },
     filetypes = { "ada" },
     -- *.gpr and *.adc would be nice to have here
-    root_dir = util.root_pattern("Makefile", ".git"),
+    root_dir = function(fname)
+      return util.root_pattern("Makefile", ".git")(fname) or util.path.dirname(fname)
+    end,
   },
   docs = {
     package_json = "https://raw.githubusercontent.com/AdaCore/ada_language_server/master/integration/vscode/ada/package.json",
@@ -34,9 +36,6 @@ require('lspconfig').als.setup{
 }
 ```
 ]],
-    default_config = {
-      root_dir = [[util.root_pattern("Makefile", ".git")]],
-    },
   },
 }
 

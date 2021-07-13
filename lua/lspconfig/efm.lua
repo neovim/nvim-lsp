@@ -18,9 +18,6 @@ https://github.com/mattn/efm-langserver
 
 General purpose Language Server that can use specified error message format generated from specified command.
 ]],
-    default_config = {
-      root_dir = [[util.root_pattern(".git")(fname) or util.path.dirname(fname)]],
-    },
   },
 }
 -- vim:et ts=2 sw=2

@@ -18,9 +18,6 @@ https://github.com/regen100/cmake-language-server
 
 CMake LSP Implementation
 ]],
-    default_config = {
-      root_dir = [[root_pattern(".git", "compile_commands.json", "build") or dirname]],
-    },
   },
 }
 

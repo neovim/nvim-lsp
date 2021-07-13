@@ -8,7 +8,9 @@ configs[server_name] = {
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "handlebars", "typescript", "javascript" },
-    root_dir = util.root_pattern("ember-cli-build.js", ".git"),
+    root_dir = function(fname)
+      return util.root_pattern("ember-cli-build.js", ".git")(fname) or util.path.dirname(fname)
+    end,
   },
   docs = {
     description = [[
@@ -20,9 +22,6 @@ https://github.com/lifeart/ember-language-server
 npm install -g @lifeart/ember-language-server
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern("ember-cli-build.js", ".git")]],
-    },
   },
 }
 

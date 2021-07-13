@@ -18,7 +18,7 @@ configs[server_name] = {
     root_dir = function(fname)
       local filetype = api.nvim_buf_get_option(0, "filetype")
       if filetype == "elm" or (filetype == "json" and fname:match "elm%.json$") then
-        return elm_root_pattern(fname)
+        return elm_root_pattern(fname) or util.path.dirname(fname)
       end
     end,
     init_options = {
@@ -38,9 +38,6 @@ If you don't want to use Nvim to install it, then you can use:
 npm install -g elm elm-test elm-format @elm-tooling/elm-language-server
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern("elm.json")]],
-    },
   },
 }
 

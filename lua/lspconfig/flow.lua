@@ -5,7 +5,9 @@ configs.flow = {
   default_config = {
     cmd = { "npx", "--no-install", "flow", "lsp" },
     filetypes = { "javascript", "javascriptreact", "javascript.jsx" },
-    root_dir = util.root_pattern ".flowconfig",
+    root_dir = function(fname)
+      return util.root_pattern ".flowconfig"(fname) or util.path.dirname(fname)
+    end,
   },
   docs = {
     package_json = "https://raw.githubusercontent.com/flowtype/flow-for-vscode/master/package.json",
@@ -22,9 +24,6 @@ See below for lsp command options.
 npx flow lsp --help
 ```
     ]],
-    default_config = {
-      root_dir = [[root_pattern(".flowconfig")]],
-    },
   },
 }
 -- vim:et ts=2 sw=2

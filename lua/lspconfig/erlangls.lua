@@ -24,8 +24,5 @@ Installation requirements:
     - [Erlang OTP 21+](https://github.com/erlang/otp)
     - [rebar3 3.9.1+](https://github.com/erlang/rebar3)
 ]],
-    default_config = {
-      root_dir = [[root_pattern('rebar.config', 'erlang.mk', '.git') or util.path.dirname(fname)]],
-    },
   },
 }
