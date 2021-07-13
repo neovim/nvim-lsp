@@ -138,9 +138,6 @@ https://github.com/denoland/deno
 
 Deno's built-in language server
 ]],
-    default_config = {
-      root_dir = [[root_pattern("package.json", "tsconfig.json", ".git")]],
-    },
   },
 }
 
@@ -148,4 +145,5 @@ configs.denols.definition = denols_definition
 configs.denols.references = denols_references
 configs.denols.buf_cache = buf_cache
 configs.denols.virtual_text_document = virtual_text_document
+
 -- vim:et ts=2 sw=2

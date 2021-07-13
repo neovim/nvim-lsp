@@ -1,11 +1,20 @@
 local configs = require "lspconfig/configs"
+local util = require "lspconfig/util"
+
+local root_files = {
+  "pyproject.toml",
+  "setup.py",
+  "setup.cfg",
+  "requirements.txt",
+  "Pipfile",
+}
 
 configs.pyls = {
   default_config = {
     cmd = { "pyls" },
     filetypes = { "python" },
     root_dir = function(fname)
-      return vim.fn.getcwd()
+      return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
     end,
   },
   docs = {
@@ -18,9 +27,7 @@ https://github.com/palantir/python-language-server
 The language server can be installed via `pipx install 'python-language-server[all]'`.
 
     ]],
-    default_config = {
-      root_dir = "vim's starting directory",
-    },
   },
 }
+
 -- vim:et ts=2 sw=2

@@ -39,9 +39,6 @@ Note, if you download the executable for darwin you will need to strip the quara
 find /path/to/omnisharp-osx | xargs xattr -r -d com.apple.quarantine
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern(".csproj", ".sln")]],
-    },
   },
 }
 

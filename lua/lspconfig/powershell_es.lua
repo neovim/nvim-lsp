@@ -20,9 +20,7 @@ configs[server_name] = {
       new_config.cmd = make_cmd(bundle_path)
     end,
     filetypes = { "ps1" },
-    root_dir = function(fname)
-      return util.find_git_ancestor(fname) or vim.fn.getcwd()
-    end,
+    root_dir = util.find_git_ancestor,
   },
   docs = {
     description = [[
@@ -53,9 +51,6 @@ require'lspconfig'.powershell_es.setup{
 }
 ```
 ]],
-    default_config = {
-      root_dir = "git root or current directory",
-    },
   },
 }
 

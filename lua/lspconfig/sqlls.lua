@@ -3,14 +3,10 @@ local util = require "lspconfig/util"
 
 local server_name = "sqlls"
 
-local root_pattern = util.root_pattern ".sqllsrc.json"
-
 configs[server_name] = {
   default_config = {
     filetypes = { "sql", "mysql" },
-    root_dir = function(fname)
-      return root_pattern(fname) or vim.loop.os_homedir()
-    end,
+    root_dir = util.root_pattern ".sqllsrc.json",
     settings = {},
   },
   docs = {

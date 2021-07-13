@@ -56,10 +56,8 @@ end
 configs.texlab = {
   default_config = {
     cmd = { "texlab" },
+    root_dir = util.find_git_ancestor,
     filetypes = { "tex", "bib" },
-    root_dir = function(filename)
-      return util.path.dirname(filename)
-    end,
     settings = {
       texlab = {
         rootDirectory = nil,
@@ -119,4 +117,5 @@ See https://github.com/latex-lsp/texlab/blob/master/docs/options.md for configur
 
 configs.texlab.buf_build = buf_build
 configs.texlab.buf_search = buf_search
+
 -- vim:et ts=2 sw=2

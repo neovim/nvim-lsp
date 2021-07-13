@@ -28,9 +28,7 @@ require'lspconfig'.vls.setup {
 }
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern("v.mod", ".git")]],
-    },
   },
 }
+
 -- vim:et ts=2

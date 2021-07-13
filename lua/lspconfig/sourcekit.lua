@@ -14,9 +14,7 @@ https://github.com/apple/sourcekit-lsp
 
 Language server for Swift and C/C++/Objective-C.
     ]],
-    default_config = {
-      root_dir = [[root_pattern("Package.swift", ".git")]],
-    },
   },
 }
+
 -- vim:et ts=2 sw=2

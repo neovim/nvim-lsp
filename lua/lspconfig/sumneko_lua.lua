@@ -6,9 +6,7 @@ local name = "sumneko_lua"
 configs[name] = {
   default_config = {
     filetypes = { "lua" },
-    root_dir = function(fname)
-      return util.find_git_ancestor(fname) or util.path.dirname(fname)
-    end,
+    root_dir = util.find_git_ancestor,
     log_level = vim.lsp.protocol.MessageType.Warning,
     settings = { Lua = { telemetry = { enable = false } } },
   },
@@ -70,9 +68,7 @@ require'lspconfig'.sumneko_lua.setup {
 }
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern(".git") or bufdir]],
-    },
   },
 }
+
 -- vim:et ts=2

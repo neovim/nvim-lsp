@@ -11,9 +11,7 @@ configs[server_name] = {
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "vim" },
-    root_dir = function(fname)
-      return util.find_git_ancestor(fname) or vim.fn.getcwd()
-    end,
+    root_dir = util.find_git_ancestor,
     init_options = {
       iskeyword = "@,48-57,_,192-255,-#",
       vimruntime = "",

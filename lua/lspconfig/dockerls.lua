@@ -19,9 +19,6 @@ https://github.com/rcjsuen/dockerfile-language-server-nodejs
 npm install -g dockerfile-language-server-nodejs
 ```
     ]],
-    default_config = {
-      root_dir = [[root_pattern("Dockerfile")]],
-    },
   },
 }
 

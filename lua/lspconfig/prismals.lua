@@ -24,8 +24,7 @@ npm install -g @prisma/language-server
 
 'prismals, a language server for the prisma javascript and typescript orm'
 ]],
-    default_config = {
-      root_dir = [[root_pattern(".git", "package.json")]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

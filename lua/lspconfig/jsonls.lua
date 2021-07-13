@@ -11,7 +11,7 @@ configs[server_name] = {
     init_options = {
       provideFormatter = true,
     },
-    root_dir = util.root_pattern(".git", vim.fn.getcwd()),
+    root_dir = util.find_git_ancestor,
   },
   docs = {
     -- this language server config is in VSCode built-in package.json
@@ -40,9 +40,6 @@ require'lspconfig'.jsonls.setup {
 }
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern(".git", vim.fn.getcwd())]],
-    },
   },
 }
 

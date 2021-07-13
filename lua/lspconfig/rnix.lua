@@ -8,9 +8,7 @@ configs[name] = {
   default_config = {
     cmd = { "rnix-lsp" },
     filetypes = { "nix" },
-    root_dir = function(fname)
-      return util.find_git_ancestor(fname) or vim.loop.os_homedir()
-    end,
+    root_dir = util.find_git_ancestor,
     settings = {},
     init_options = {},
   },
@@ -25,8 +23,7 @@ To install manually, run `cargo install rnix-lsp`. If you are using nix, rnix-ls
 This server accepts configuration via the `settings` key.
 
     ]],
-    default_config = {
-      root_dir = "vim's starting directory",
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

@@ -1,6 +1,7 @@
 local util = require "lspconfig/util"
 local api, validate, lsp = vim.api, vim.validate, vim.lsp
 local tbl_extend = vim.tbl_extend
+local prompts = require "lspconfig.ui.prompt"
 
 local configs = {}
 
@@ -57,28 +58,33 @@ function configs.__newindex(t, config_name, config_def)
       trigger = "BufReadPost *"
     end
     if not (config.autostart == false) then
-      api.nvim_command(string.format("autocmd %s lua require'lspconfig'[%q].manager.try_add()", trigger, config.name))
+      api.nvim_command(
+        string.format("autocmd %s unsilent lua require'lspconfig'[%q].manager.try_add()", trigger, config.name)
+      )
     end
 
     local get_root_dir = config.root_dir
 
     function M.autostart()
-      local root_dir = get_root_dir(api.nvim_buf_get_name(0), api.nvim_get_current_buf())
+      local bufname = api.nvim_buf_get_name(0)
+      local bufnr = api.nvim_get_current_buf()
+      local root_dir = get_root_dir(bufname, bufnr) or prompts.root_directory_prompt(bufname, bufnr)
+
       if not root_dir then
         vim.notify(string.format("Autostart for %s failed: matching root directory not detected.", config_name))
         return
       end
       api.nvim_command(
         string.format(
-          "autocmd %s lua require'lspconfig'[%q].manager.try_add_wrapper()",
+          "autocmd %s unsilent lua require'lspconfig'[%q].manager.try_add_wrapper()",
           "BufReadPost " .. root_dir .. "/*",
           config.name
         )
       )
-      for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-        local buf_dir = api.nvim_buf_get_name(bufnr)
+      for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
+        local buf_dir = api.nvim_buf_get_name(buffer)
         if buf_dir:sub(1, root_dir:len()) == root_dir then
-          M.manager.try_add_wrapper(bufnr)
+          M.manager.try_add_wrapper(buffer)
         end
       end
     end
@@ -141,7 +147,7 @@ function configs.__newindex(t, config_name, config_def)
         else
           api.nvim_command(
             string.format(
-              "autocmd BufEnter <buffer=%d> ++once lua require'lspconfig'[%q]._setup_buffer(%d,%d)",
+              "autocmd BufEnter <buffer=%d> ++once unsilent lua require'lspconfig'[%q]._setup_buffer(%d,%d)",
               bufnr,
               config_name,
               client.id,
@@ -164,7 +170,13 @@ function configs.__newindex(t, config_name, config_def)
       if vim.api.nvim_buf_get_option(bufnr, "buftype") == "nofile" then
         return
       end
-      local root_dir = get_root_dir(api.nvim_buf_get_name(bufnr), bufnr)
+      local bufname = api.nvim_buf_get_name(bufnr)
+      local root_dir = get_root_dir(bufname, bufnr) or prompts.root_directory_prompt(bufname, bufnr)
+
+      if not root_dir then
+        vim.notify(string.format("Autostart for %s failed: matching root directory not detected.", config_name))
+        return
+      end
       local id = manager.add(root_dir)
       if id then
         lsp.buf_attach_client(bufnr, id)
@@ -219,4 +231,5 @@ function configs.__newindex(t, config_name, config_def)
 end
 
 return setmetatable({}, configs)
+
 -- vim:et ts=2 sw=2

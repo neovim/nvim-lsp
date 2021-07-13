@@ -30,9 +30,7 @@ configs.julials = {
       new_config.cmd = new_cmd
     end,
     filetypes = { "julia" },
-    root_dir = function(fname)
-      return util.find_git_ancestor(fname) or vim.fn.getcwd()
-    end,
+    root_dir = util.find_git_ancestor,
   },
   docs = {
     package_json = "https://raw.githubusercontent.com/julia-vscode/julia-vscode/master/package.json",

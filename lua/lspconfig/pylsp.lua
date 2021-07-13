@@ -1,19 +1,20 @@
 local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 
+local root_files = {
+  "pyproject.toml",
+  "setup.py",
+  "setup.cfg",
+  "requirements.txt",
+  "Pipfile",
+}
+
 configs.pylsp = {
   default_config = {
     cmd = { "pylsp" },
     filetypes = { "python" },
     root_dir = function(fname)
-      local root_files = {
-        "pyproject.toml",
-        "setup.py",
-        "setup.cfg",
-        "requirements.txt",
-        "Pipfile",
-      }
-      return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname) or util.path.dirname(fname)
+      return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
     end,
   },
   docs = {
@@ -29,4 +30,5 @@ Note: This is a community fork of `pyls`.
     ]],
   },
 }
+
 -- vim:et ts=2 sw=2

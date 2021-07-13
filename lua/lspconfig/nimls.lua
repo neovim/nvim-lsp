@@ -6,7 +6,7 @@ configs.nimls = {
     cmd = { "nimlsp" },
     filetypes = { "nim" },
     root_dir = function(fname)
-      return util.root_pattern "*.nimble"(fname) or util.find_git_ancestor(fname) or util.path.dirname(fname)
+      return util.root_pattern "*.nimble"(fname) or util.find_git_ancestor(fname)
     end,
   },
   docs = {
@@ -18,8 +18,7 @@ https://github.com/PMunch/nimlsp
 nimble install nimlsp
 ```
     ]],
-    default_config = {
-      root_dir = [[root_pattern(".git") or os_homedir]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

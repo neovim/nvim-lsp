@@ -317,4 +317,5 @@ function M.find_package_json_ancestor(startpath)
 end
 
 return M
+
 -- vim:et ts=2 sw=2

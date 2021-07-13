@@ -22,9 +22,7 @@ configs.perlls = {
       },
     },
     filetypes = { "perl" },
-    root_dir = function(fname)
-      return util.root_pattern ".git"(fname) or vim.fn.getcwd()
-    end,
+    root_dir = util.find_git_ancestor,
   },
   docs = {
     package_json = "https://raw.githubusercontent.com/richterger/Perl-LanguageServer/master/clients/vscode/perl/package.json",
@@ -35,9 +33,7 @@ https://github.com/richterger/Perl-LanguageServer/tree/master/clients/vscode/per
 
 To use the language server, ensure that you have Perl::LanguageServer installed and perl command is on your path.
 ]],
-    default_config = {
-      root_dir = "vim's starting directory",
-    },
   },
 }
+
 -- vim:et ts=2 sw=2

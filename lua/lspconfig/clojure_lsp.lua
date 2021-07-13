@@ -13,9 +13,7 @@ https://github.com/snoe/clojure-lsp
 
 Clojure Language Server
 ]],
-    default_config = {
-      root_dir = [[root_pattern("project.clj", "deps.edn", ".git")]],
-    },
   },
 }
+
 -- vim:et ts=2 sw=2

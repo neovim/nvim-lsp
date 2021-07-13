@@ -21,9 +21,6 @@ https://github.com/graphql/graphiql/tree/main/packages/graphql-language-service-
 npm install -g graphql-language-service-cli
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern('.git', '.graphqlrc')]],
-    },
   },
 }
 

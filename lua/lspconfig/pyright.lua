@@ -8,11 +8,11 @@ if vim.fn.has "win32" == 1 then
 end
 
 local root_files = {
-  "setup.py",
   "pyproject.toml",
+  "setup.py",
   "setup.cfg",
   "requirements.txt",
-  ".git",
+  "Pipfile",
 }
 
 local function organize_imports()
@@ -27,8 +27,8 @@ configs[server_name] = {
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "python" },
-    root_dir = function(filename)
-      return util.root_pattern(unpack(root_files))(filename) or util.path.dirname(filename)
+    root_dir = function(fname)
+      return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
     end,
     settings = {
       python = {

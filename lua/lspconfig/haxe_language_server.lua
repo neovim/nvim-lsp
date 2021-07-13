@@ -41,8 +41,7 @@ By default, an HXML compiler arguments file named `build.hxml` is expected in
 your project's root directory. If your file is named something different,
 specify it using the `init_options.displayArguments` setting.
 ]],
-    default_config = {
-      root_dir = [[root_pattern("*.hxml")]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2

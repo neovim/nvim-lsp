@@ -30,9 +30,7 @@ You can install solargraph via gem install.
 gem install --user-install solargraph
 ```
     ]],
-    default_config = {
-      root_dir = [[root_pattern("Gemfile", ".git")]],
-    },
   },
 }
+
 -- vim:et ts=2 sw=2

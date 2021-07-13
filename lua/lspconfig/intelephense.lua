@@ -8,13 +8,7 @@ configs[server_name] = {
   default_config = {
     cmd = { bin_name, "--stdio" },
     filetypes = { "php" },
-    root_dir = function(pattern)
-      local cwd = vim.loop.cwd()
-      local root = util.root_pattern("composer.json", ".git")(pattern)
-
-      -- prefer cwd if root is a descendant
-      return util.path.is_descendant(cwd, root) and cwd or root
-    end,
+    root_dir = util.root_pattern("composer.json", ".git"),
   },
   docs = {
     description = [[
@@ -26,7 +20,6 @@ npm install -g intelephense
 ```
 ]],
     default_config = {
-      root_dir = [[root_pattern("composer.json", ".git")]],
       init_options = [[{
         storagePath = Optional absolute path to storage dir. Defaults to os.tmpdir().
         globalStoragePath = Optional absolute path to a global storage dir. Defaults to os.homedir().

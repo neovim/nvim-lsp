@@ -5,9 +5,7 @@ configs.sqls = {
   default_config = {
     cmd = { "sqls" },
     filetypes = { "sql", "mysql" },
-    root_dir = function(fname)
-      return util.root_pattern "config.yml"(fname) or util.path.dirname(fname)
-    end,
+    root_dir = util.root_pattern "config.yml",
     settings = {},
   },
   docs = {

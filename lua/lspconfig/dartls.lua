@@ -47,9 +47,7 @@ https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server/tool/lsp_spec
 
 Language server for dart.
 ]],
-    default_config = {
-      root_dir = [[root_pattern("pubspec.yaml")]],
-    },
   },
 }
+
 -- vim:et ts=2 sw=2

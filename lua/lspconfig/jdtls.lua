@@ -78,13 +78,12 @@ configs[server_name] = {
     },
     filetypes = { "java" },
     root_dir = function(fname)
-      for _, patterns in ipairs(root_files) do
+      for _, patterns in pairs(root_files) do
         local root = util.root_pattern(unpack(patterns))(fname)
         if root then
           return root
         end
       end
-      return vim.fn.getcwd()
     end,
     init_options = {
       workspace = path.join { vim.loop.os_homedir(), "workspace" },
@@ -147,8 +146,7 @@ export JDTLS_CONFIG=/path/to/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/re
 export WORKSPACE=$HOME/workspace
 ```
     ]],
-    default_config = {
-      root_dir = [[root_pattern(".git")]],
-    },
   },
 }
+
+-- vim:et ts=2 sw=2
