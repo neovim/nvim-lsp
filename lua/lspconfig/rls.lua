@@ -8,6 +8,7 @@ configs.rls = {
     root_dir = util.root_pattern "Cargo.toml",
   },
   docs = {
+    language_name = "Rust",
     description = [[
 https://github.com/rust-lang/rls
 

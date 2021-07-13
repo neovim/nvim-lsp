@@ -10,6 +10,7 @@ configs.scry = {
     end,
   },
   docs = {
+    language_name = "Crystal",
     description = [[
 https://github.com/crystal-lang-tools/scry
 

@@ -100,6 +100,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "Tailwind",
     description = [[
 https://github.com/tailwindlabs/tailwindcss-intellisense
 

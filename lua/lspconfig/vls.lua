@@ -9,6 +9,7 @@ configs[name] = {
     root_dir = util.root_pattern("v.mod", ".git"),
   },
   docs = {
+    language_name = "V",
     description = [[
 https://github.com/vlang/vls
 

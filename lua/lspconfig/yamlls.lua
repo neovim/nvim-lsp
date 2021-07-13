@@ -11,6 +11,7 @@ configs[server_name] = {
     root_dir = util.root_pattern(".git", vim.fn.getcwd()),
   },
   docs = {
+    language_name = "YAML",
     package_json = "https://raw.githubusercontent.com/redhat-developer/vscode-yaml/master/package.json",
     description = [[
 https://github.com/redhat-developer/yaml-language-server

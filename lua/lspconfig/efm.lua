@@ -13,6 +13,7 @@ configs[server_name] = {
   },
 
   docs = {
+    language_name = "Diagnostics",
     description = [[
 https://github.com/mattn/efm-langserver
 

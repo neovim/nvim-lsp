@@ -10,6 +10,7 @@ configs.erlangls = {
     end,
   },
   docs = {
+    language_name = "Erlang",
     description = [[
 https://erlang-ls.github.io
 

@@ -29,6 +29,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "VimScript",
     description = [[
 https://github.com/iamcco/vim-language-server
 

@@ -9,6 +9,7 @@ configs.ghcide = {
   },
 
   docs = {
+    language_name = "Haskell",
     description = [[
 https://github.com/digital-asset/ghcide
 

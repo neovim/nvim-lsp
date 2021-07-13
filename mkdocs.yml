@@ -1,0 +1,118 @@
+site_name: nvim-lspconfig
+site_url: https://example.com/
+repo_url: https://github.com/neovim/nvim-lspconfig
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/images/favicon.ico
+  palette:
+    primary: green
+    accent: green
+  features:
+    - navigation.expand
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+markdown_extensions:
+  - sane_lists
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.magiclink
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/neovim/nvim-lspconfig
+nav:
+  - Home: index.md
+  - Install: install.md
+  - Configurations:
+    - Introduction: configurations/index.md
+    - Languages:
+      - Ada (als): configurations/als.md
+      - Angular (angularls): configurations/angularls.md
+      - Bash (bashls): configurations/bashls.md
+      - Beancount (beancount): configurations/beancount.md
+      - C like (ccls): configurations/ccls.md
+      - C like (clangd): configurations/clangd.md
+      - C like (sourcekit): configurations/sourcekit.md
+      - Clojure (clojure_lsp): configurations/clojure_lsp.md
+      - CMake (cmake): configurations/cmake.md
+      - C(omnisharp): configurations/omnisharp.md
+      - Crystal (crystalline): configurations/crystalline.md
+      - Crystal (scry): configurations/scry.md
+      - CSS (cssls): configurations/cssls.md
+      - Dart (dartls): configurations/dartls.md
+      - Dhall (dhall_lsp_server): configurations/dhall_lsp_server.md
+      - Docker (dockerls): configurations/dockerls.md
+      - DOT (dotls): configurations/dotls.md
+      - Elexir (elixirls): configurations/elixirls.md
+      - Elm (elmls): configurations/elmls.md
+      - Erlang (erlangls): configurations/erlangls.md
+      - F(fsautocomplete): configurations/fsautocomplete.md
+      - Fortan (fortls): configurations/fortls.md
+      - GDScript (gdscript): configurations/gdscript.md
+      - Go (gopls): configurations/gopls.md
+      - GraphQL (graphql): configurations/graphql.md
+      - Haskell (ghcide): configurations/ghcide.md
+      - Haskell (hie): configurations/hie.md
+      - Haskell (hls): configurations/hls.md
+      - Haxe (haxe_language_server): configurations/haxe_language_server.md
+      - HTML (html): configurations/html.md
+      - Java (groovyls): configurations/groovyls.md
+      - Java (java_language_server): configurations/java_language_server.md
+      - Java (jdtls): configurations/jdtls.md
+      - JSON (jsonls): configurations/jsonls.md
+      - Julia (julials): configurations/julials.md
+      - Kotlin (kotlin_language_server): configurations/kotlin_language_server.md
+      - Lean (lean3ls): configurations/lean3ls.md
+      - Lean (leanls): configurations/leanls.md
+      - Lua (sumneko_lua): configurations/sumneko_lua.md
+      - Markdown (zeta_note): configurations/zeta_note.md
+      - Nim (nimls): configurations/nimls.md
+      - Nix (rnix): configurations/rnix.md
+      - OCaml (ocamlls): configurations/ocamlls.md
+      - OCaml (ocamllsp): configurations/ocamllsp.md
+      - Perl (perlls): configurations/perlls.md
+      - PHP (intelephense): configurations/intelephense.md
+      - PHP (phpactor): configurations/phpactor.md
+      - Powershell (powershell_es): configurations/powershell_es.md
+      - Prisma (prismals): configurations/prismals.md
+      - Puppet (puppet): configurations/puppet.md
+      - PureScript (purescriptls): configurations/purescriptls.md
+      - Python (jedi_language_server): configurations/jedi_language_server.md
+      - Python (pyls): configurations/pyls.md
+      - Python (pyls_ms): configurations/pyls_ms.md
+      - Python (pylsp): configurations/pylsp.md
+      - Python (pyright): configurations/pyright.md
+      - Racket (racket_langserver): configurations/racket_langserver.md
+      - ReScript (rescriptls): configurations/rescriptls.md
+      - R (r_language_server): configurations/r_language_server.md
+      - Ruby (solargraph): configurations/solargraph.md
+      - Ruby (sorbet): configurations/sorbet.md
+      - Rust (rls): configurations/rls.md
+      - Rust (rust_analyzer): configurations/rust_analyzer.md
+      - Scala (metals): configurations/metals.md
+      - SQL (sqlls): configurations/sqlls.md
+      - SQL (sqls): configurations/sqls.md
+      - Stylelint (stylelint_lsp): configurations/stylelint_lsp.md
+      - Svelte (svelte): configurations/svelte.md
+      - Tailwind (tailwindcss): configurations/tailwindcss.md
+      - Terraform (terraformls): configurations/terraformls.md
+      - Terraform (tflint): configurations/tflint.md
+      - TexLab (texlab): configurations/texlab.md
+      - TypeScript (denols): configurations/denols.md
+      - TypeScript (flow): configurations/flow.md
+      - TypeScript (rome): configurations/rome.md
+      - TypeScript (tsserver): configurations/tsserver.md
+      - Vala (vala_ls): configurations/vala_ls.md
+      - Verilog (svls): configurations/svls.md
+      - VimScript (vimls): configurations/vimls.md
+      - Vue (vuels): configurations/vuels.md
+      - V (vls): configurations/vls.md
+      - YAML (yamlls): configurations/yamlls.md
+      - Zig (zls): configurations/zls.md
+    - Misc Servers:
+      - CodeQL (codeqlls): configurations/codeqlls.md
+      - Diagnostics (diagnosticls): configurations/diagnosticls.md
+      - Diagnostics (efm): configurations/efm.md

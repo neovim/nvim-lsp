@@ -26,6 +26,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "CodeQL",
     description = [[
 Reference:
 https://help.semmle.com/codeql/codeql-cli.html

@@ -11,6 +11,7 @@ configs[server_name] = {
     root_dir = util.path.dirname,
   },
   docs = {
+    language_name = "Diagnostics",
     description = [[
 https://github.com/iamcco/diagnostic-languageserver
 

@@ -21,6 +21,7 @@ configs.hls = {
   },
 
   docs = {
+    language_name = "Haskell",
     description = [[
 https://github.com/haskell/haskell-language-server
 

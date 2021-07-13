@@ -29,6 +29,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "Elm",
     package_json = "https://raw.githubusercontent.com/elm-tooling/elm-language-client-vscode/master/package.json",
     description = [[
 https://github.com/elm-tooling/elm-language-server#installation

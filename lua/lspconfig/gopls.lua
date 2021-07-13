@@ -10,6 +10,7 @@ configs.gopls = {
   -- on_new_config = function(new_config) end;
   -- on_attach = function(client, bufnr) end;
   docs = {
+    language_name = "Go",
     description = [[
 https://github.com/golang/tools/tree/master/gopls
 

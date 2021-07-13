@@ -10,6 +10,7 @@ configs.ccls = {
     end,
   },
   docs = {
+    language_name = "C like",
     description = [[
 https://github.com/MaskRay/ccls/wiki
 

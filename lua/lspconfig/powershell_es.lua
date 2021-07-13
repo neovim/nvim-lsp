@@ -25,6 +25,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "Powershell",
     description = [[
 https://github.com/PowerShell/PowerShellEditorServices
 

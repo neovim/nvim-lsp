@@ -14,6 +14,7 @@ configs[server_name] = {
     root_dir = util.root_pattern("spago.dhall", "bower.json"),
   },
   docs = {
+    language_name = "PureScript",
     package_json = "https://raw.githubusercontent.com/nwolverson/vscode-ide-purescript/master/package.json",
     description = [[
 https://github.com/nwolverson/purescript-language-server

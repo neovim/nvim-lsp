@@ -8,6 +8,7 @@ configs.sourcekit = {
     root_dir = util.root_pattern("Package.swift", ".git"),
   },
   docs = {
+    language_name = "C like",
     package_json = "https://raw.githubusercontent.com/apple/sourcekit-lsp/main/Editors/vscode/package.json",
     description = [[
 https://github.com/apple/sourcekit-lsp

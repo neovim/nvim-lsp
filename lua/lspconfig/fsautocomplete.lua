@@ -13,6 +13,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "F#",
     description = [[
 https://github.com/fsharp/FsAutoComplete
 

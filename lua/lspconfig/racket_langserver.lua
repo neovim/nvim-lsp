@@ -14,6 +14,7 @@ configs.racket_langserver = {
     end,
   },
   docs = {
+    language_name = "Racket",
     description = [[
 [https://github.com/jeapostrophe/racket-langserver](https://github.com/jeapostrophe/racket-langserver)
 

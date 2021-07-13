@@ -17,6 +17,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "TypeScript",
     description = [[
 https://github.com/theia-ide/typescript-language-server
 

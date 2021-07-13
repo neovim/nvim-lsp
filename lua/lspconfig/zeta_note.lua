@@ -9,6 +9,7 @@ configs[server_name] = {
     root_dir = util.root_pattern ".zeta.toml",
   },
   docs = {
+    language_name = "Markdown",
     package_json = "https://raw.githubusercontent.com/artempyanykh/zeta-note-vscode/main/package.json",
     description = [[
 https://github.com/artempyanykh/zeta-note

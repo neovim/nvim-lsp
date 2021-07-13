@@ -16,6 +16,7 @@ configs.haxe_language_server = {
     },
   },
   docs = {
+    language_name = "Haxe",
     description = [[
 https://github.com/vshaxe/haxe-language-server
 

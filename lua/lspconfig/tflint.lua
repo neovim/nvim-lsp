@@ -8,6 +8,7 @@ configs.tflint = {
     root_dir = util.root_pattern(".terraform", ".git", ".tflint.hcl"),
   },
   docs = {
+    language_name = "Terraform",
     description = [[
 https://github.com/terraform-linters/tflint
 

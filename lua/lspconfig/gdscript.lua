@@ -8,6 +8,7 @@ configs.gdscript = {
     root_dir = util.root_pattern("project.godot", ".git"),
   },
   docs = {
+    language_name = "GDScript",
     description = [[
 https://github.com/godotengine/godot
 

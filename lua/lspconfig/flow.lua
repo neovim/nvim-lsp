@@ -8,6 +8,7 @@ configs.flow = {
     root_dir = util.root_pattern ".flowconfig",
   },
   docs = {
+    language_name = "TypeScript",
     package_json = "https://raw.githubusercontent.com/flowtype/flow-for-vscode/master/package.json",
     description = [[
 https://flow.org/

@@ -10,6 +10,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "Elexir",
     package_json = "https://raw.githubusercontent.com/JakeBecker/vscode-elixir-ls/master/package.json",
     description = [[
 https://github.com/elixir-lsp/elixir-ls

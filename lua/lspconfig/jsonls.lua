@@ -14,6 +14,7 @@ configs[server_name] = {
     root_dir = util.root_pattern(".git", vim.fn.getcwd()),
   },
   docs = {
+    language_name = "JSON",
     -- this language server config is in VSCode built-in package.json
     package_json = "https://raw.githubusercontent.com/microsoft/vscode/master/extensions/json-language-features/package.json",
     description = [[

@@ -133,6 +133,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "TypeScript",
     description = [[
 https://github.com/denoland/deno
 

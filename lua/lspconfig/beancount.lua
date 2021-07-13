@@ -19,6 +19,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "Beancount",
     description = [[
 https://github.com/polarmutex/beancount-language-server#installation
 

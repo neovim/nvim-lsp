@@ -10,6 +10,7 @@ configs.zls = {
     end,
   },
   docs = {
+    language_name = "Zig",
     description = [[
            https://github.com/zigtools/zls
 

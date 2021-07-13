@@ -10,6 +10,7 @@ configs[server_name] = {
     root_dir = util.root_pattern ".git",
   },
   docs = {
+    language_name = "Verilog",
     description = [[
       https://github.com/dalance/svls
       Language server for verilog and SystemVerilog

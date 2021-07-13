@@ -11,6 +11,7 @@ configs.sqls = {
     settings = {},
   },
   docs = {
+    language_name = "SQL",
     description = [[
 https://github.com/lighttiger2505/sqls
 

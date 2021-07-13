@@ -18,6 +18,7 @@ configs.leanls = {
     end,
   },
   docs = {
+    language_name = "Lean",
     description = [[
 https://github.com/leanprover/lean4
 

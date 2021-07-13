@@ -17,6 +17,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "PHP",
     description = [[
 https://intelephense.com/
 

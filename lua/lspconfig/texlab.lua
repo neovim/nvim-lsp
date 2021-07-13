@@ -104,6 +104,7 @@ configs.texlab = {
     },
   },
   docs = {
+    language_name = "TexLab",
     description = [[
 https://github.com/latex-lsp/texlab
 

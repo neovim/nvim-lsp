@@ -13,6 +13,7 @@ configs.cmake = {
     },
   },
   docs = {
+    language_name = "CMake",
     description = [[
 https://github.com/regen100/cmake-language-server
 

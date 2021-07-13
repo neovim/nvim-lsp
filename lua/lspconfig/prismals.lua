@@ -19,6 +19,7 @@ configs[server_name] = {
     root_dir = util.root_pattern(".git", "package.json"),
   },
   docs = {
+    language_name = "Prisma",
     description = [[
 npm install -g @prisma/language-server
 

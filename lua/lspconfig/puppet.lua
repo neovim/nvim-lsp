@@ -20,6 +20,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "Puppet",
     description = [[
 LSP server for Puppet.
 

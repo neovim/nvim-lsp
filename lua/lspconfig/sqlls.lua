@@ -14,6 +14,7 @@ configs[server_name] = {
     settings = {},
   },
   docs = {
+    language_name = "SQL",
     description = [[
 https://github.com/joe-re/sql-language-server
 

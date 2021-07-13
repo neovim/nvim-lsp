@@ -40,6 +40,7 @@ configs.kotlin_language_server = {
     cmd = { bin_name },
   },
   docs = {
+    language_name = "Kotlin",
     package_json = "https://raw.githubusercontent.com/fwcd/vscode-kotlin/master/package.json",
     description = [[
     A kotlin language server which was developed for internal usage and

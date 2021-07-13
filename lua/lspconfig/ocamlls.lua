@@ -11,6 +11,7 @@ configs[server_name] = {
     root_dir = util.root_pattern("*.opam", "esy.json", "package.json"),
   },
   docs = {
+    language_name = "OCaml",
     description = [[
 https://github.com/ocaml-lsp/ocaml-language-server
 

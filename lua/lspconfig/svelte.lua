@@ -11,6 +11,7 @@ configs[server_name] = {
     root_dir = util.root_pattern("package.json", ".git"),
   },
   docs = {
+    language_name = "Svelte",
     description = [[
 https://github.com/sveltejs/language-tools/tree/master/packages/language-server
 

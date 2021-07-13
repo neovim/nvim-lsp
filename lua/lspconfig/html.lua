@@ -20,6 +20,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "HTML",
     description = [[
 https://github.com/hrsh7th/vscode-langservers-extracted
 

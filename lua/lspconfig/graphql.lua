@@ -12,6 +12,7 @@ configs[server_name] = {
   },
 
   docs = {
+    language_name = "GraphQL",
     description = [[
 https://github.com/graphql/graphiql/tree/main/packages/graphql-language-service-cli
 

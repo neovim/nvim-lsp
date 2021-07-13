@@ -18,6 +18,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "Scala",
     description = [[
 https://scalameta.org/metals/
 

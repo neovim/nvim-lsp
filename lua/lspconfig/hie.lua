@@ -9,6 +9,7 @@ configs.hie = {
   },
 
   docs = {
+    language_name = "Haskell",
     package_json = "https://raw.githubusercontent.com/alanz/vscode-hie-server/master/package.json",
     description = [[
 https://github.com/haskell/haskell-ide-engine

@@ -17,6 +17,7 @@ configs[server_name] = {
     root_dir = util.path.dirname,
   },
   docs = {
+    language_name = "Bash",
     description = [[
 https://github.com/mads-hartmann/bash-language-server
 

@@ -11,6 +11,7 @@ configs[server_name] = {
     root_dir = util.root_pattern("Gemfile", ".git"),
   },
   docs = {
+    language_name = "Ruby",
     description = [[
 https://sorbet.org
 

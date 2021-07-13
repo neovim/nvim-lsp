@@ -8,6 +8,7 @@ configs.clojure_lsp = {
     root_dir = util.root_pattern("project.clj", "deps.edn", ".git"),
   },
   docs = {
+    language_name = "Clojure",
     description = [[
 https://github.com/snoe/clojure-lsp
 

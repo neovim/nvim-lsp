@@ -20,6 +20,7 @@ configs.rome = {
     end,
   },
   docs = {
+    language_name = "TypeScript",
     description = [[
 https://rome.tools
 

@@ -11,6 +11,7 @@ configs[server_name] = {
     root_dir = util.root_pattern "Dockerfile",
   },
   docs = {
+    language_name = "Docker",
     description = [[
 https://github.com/rcjsuen/dockerfile-language-server-nodejs
 

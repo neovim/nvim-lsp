@@ -10,6 +10,7 @@ configs.crystalline = {
     end,
   },
   docs = {
+    language_name = "Crystal",
     description = [[
 https://github.com/elbywan/crystalline
 

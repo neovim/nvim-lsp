@@ -18,6 +18,7 @@ configs.lean3ls = {
     end,
   },
   docs = {
+    language_name = "Lean",
     description = [[
 https://github.com/leanprover/lean-client-js/tree/master/lean-language-server
 

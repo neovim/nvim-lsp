@@ -10,6 +10,7 @@ configs.nimls = {
     end,
   },
   docs = {
+    language_name = "Nim",
     package_json = "https://raw.githubusercontent.com/pragmagic/vscode-nim/master/package.json",
     description = [[
 https://github.com/PMunch/nimlsp

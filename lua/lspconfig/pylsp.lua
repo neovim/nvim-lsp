@@ -17,6 +17,7 @@ configs.pylsp = {
     end,
   },
   docs = {
+    language_name = "Python",
     description = [[
 https://github.com/python-lsp/python-lsp-server
 

@@ -56,6 +56,7 @@ configs.clangd = {
     },
   },
   docs = {
+    language_name = "C like",
     description = [[
 https://clangd.llvm.org/installation.html
 

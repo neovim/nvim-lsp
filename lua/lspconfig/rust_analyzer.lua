@@ -45,6 +45,7 @@ configs.rust_analyzer = {
     },
   },
   docs = {
+    language_name = "Rust",
     package_json = "https://raw.githubusercontent.com/rust-analyzer/rust-analyzer/master/editors/code/package.json",
     description = [[
 https://github.com/rust-analyzer/rust-analyzer

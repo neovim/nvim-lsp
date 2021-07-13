@@ -27,6 +27,7 @@ configs.perlls = {
     end,
   },
   docs = {
+    language_name = "Perl",
     package_json = "https://raw.githubusercontent.com/richterger/Perl-LanguageServer/master/clients/vscode/perl/package.json",
     description = [[
 https://github.com/richterger/Perl-LanguageServer/tree/master/clients/vscode/perl

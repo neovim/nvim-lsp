@@ -11,6 +11,7 @@ configs[name] = {
     settings = {},
   },
   docs = {
+    language_name = "ReScript",
     description = [[
 https://github.com/rescript-lang/rescript-vscode
 

@@ -127,6 +127,7 @@ configs[server_name] = {
     },
   },
   docs = {
+    language_name = "Java",
     package_json = "https://raw.githubusercontent.com/redhat-developer/vscode-java/master/package.json",
     description = [[
 

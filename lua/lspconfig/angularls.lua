@@ -44,6 +44,7 @@ configs[server_name] = {
     }
   end,
   docs = {
+    language_name = "Angular",
     description = [[
 https://github.com/angular/vscode-ng-language-service
 

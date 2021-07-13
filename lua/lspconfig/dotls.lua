@@ -17,6 +17,7 @@ configs[server_name] = {
     end,
   },
   docs = {
+    language_name = "DOT",
     description = [[
 https://github.com/nikeee/dot-language-server
 
