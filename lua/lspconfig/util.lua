@@ -15,6 +15,12 @@ M.default_config = {
   handlers = {},
 }
 
+-- global config hooks
+M.global_config = {
+  on_new_config = nil,
+  root_dir = nil,
+}
+
 function M.validate_bufnr(bufnr)
   validate {
     bufnr = { bufnr, 'n' },

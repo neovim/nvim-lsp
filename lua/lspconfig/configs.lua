@@ -60,7 +60,9 @@ function configs.__newindex(t, config_name, config_def)
       api.nvim_command(string.format("autocmd %s lua require'lspconfig'[%q].manager.try_add()", trigger, config.name))
     end
 
-    local get_root_dir = config.root_dir
+    local get_root_dir = function(...)
+      return util.global_config.root_dir and util.global_config.root_dir(...) or config.root_dir(...)
+    end
 
     function M.autostart()
       local root_dir = get_root_dir(api.nvim_buf_get_name(0), api.nvim_get_current_buf())
@@ -84,7 +86,7 @@ function configs.__newindex(t, config_name, config_def)
     end
 
     -- Used by :LspInfo
-    M.get_root_dir = config.root_dir
+    M.get_root_dir = get_root_dir
     M.filetypes = config.filetypes
     M.handlers = config.handlers
     M.cmd = config.cmd
@@ -111,6 +113,9 @@ function configs.__newindex(t, config_name, config_def)
 
       if config_def.on_new_config then
         pcall(config_def.on_new_config, new_config, _root_dir)
+      end
+      if util.global_config.on_new_config then
+        pcall(util.global_config.on_new_config, new_config, _root_dir)
       end
       if config.on_new_config then
         pcall(config.on_new_config, new_config, _root_dir)
