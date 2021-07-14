@@ -3,7 +3,7 @@ local util = require 'lspconfig/util'
 
 local function readFiles(files)
     local dict = {}
-    for _,file in ipairs(files) do
+    for _,file in pairs(files) do
         local f = io.open(file, "r")
         for l in f:lines() do
             table.insert(dict, l)
@@ -14,7 +14,7 @@ end
 
 local function findLtexLang()
     local buf_clients = vim.lsp.buf_get_clients()
-    for _, client in ipairs(buf_clients) do
+    for _, client in pairs(buf_clients) do
         if client.name == "ltex" then
             return client.config.settings.ltex.language
         end
@@ -23,7 +23,7 @@ end
 
 local function findLtexFiles(filetype, value)
     local buf_clients = vim.lsp.buf_get_clients()
-    for _, client in ipairs(buf_clients) do
+    for _, client in pairs(buf_clients) do
         if client.name == "ltex" then
             local files = nil
             if filetype == 'dictionary' then
@@ -46,7 +46,7 @@ end
 local function updateConfig(lang, configtype)
     local buf_clients = vim.lsp.buf_get_clients()
     local client = nil
-    for _, lsp in ipairs(buf_clients) do
+    for _, lsp in pairs(buf_clients) do
         if lsp.name == "ltex" then
             client = lsp
         end
