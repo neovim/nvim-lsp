@@ -228,6 +228,10 @@ function M.server_per_root_dir_manager(_make_config)
     local client_id = clients[root_dir]
     if not client_id then
       local new_config = _make_config(root_dir)
+      -- do nothing if the client is not enabled
+      if new_config.enabled == false then
+        return
+      end
       --TODO:mjlbach -- these prints only show up with nvim_error_writeln()
       if not new_config.cmd then
         print(
