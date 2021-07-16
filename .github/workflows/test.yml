@@ -38,6 +38,20 @@ jobs:
     - name: Run test with building Nvim
       run: |
         make test
+    - name: Install per-config test dependencies
+      run: |
+        mkdir packpath
+        git clone --depth 1 https://github.com/nvim-lua/plenary.nvim packpath/plenary.nvim
+    - name: leanls install
+      run: |
+          curl https://raw.githubusercontent.com/Kha/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain "leanprover-community/lean:3.30.0" -y
+          echo "$HOME/.elan/bin/" >> $GITHUB_PATH
+          PATH="$PATH:$HOME/.elan/bin/"
+          cd test/fixtures/leanls/ && leanpkg configure && leanpkg build
+    - name: lean3ls install
+      run: |
+          sudo npm install -g lean-language-server
+          cd test/fixtures/lean3ls/ && leanpkg configure && leanpkg build
   macos:
     runs-on: [macos-latest]
     steps:
@@ -51,4 +65,3 @@ jobs:
     - name: Run test with building Nvim
       run: |
         make test
-
