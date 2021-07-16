@@ -26,6 +26,10 @@ Lean installation instructions can be found
 
 The Lean 4 language server is built-in with a Lean 4 install
 (and can be manually run with, e.g., `lean --server`).
+
+Note: that if you're using [lean.nvim](https://github.com/Julian/lean.nvim),
+that plugin fully handles the setup of the Lean language server,
+and you shouldn't set up `leanls` both with it and `lspconfig`.
     ]],
     default_config = {
       root_dir = [[root_pattern("leanpkg.toml") or root_pattern(".git") or path.dirname]],

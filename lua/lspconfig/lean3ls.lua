@@ -28,6 +28,10 @@ Once Lean is installed, you can install the Lean 3 language server by running
 ```sh
 npm install -g lean-language-server
 ```
+
+Note: that if you're using [lean.nvim](https://github.com/Julian/lean.nvim),
+that plugin fully handles the setup of the Lean language server,
+and you shouldn't set up `lean3ls` both with it and `lspconfig`.
     ]],
     default_config = {
       root_dir = [[root_pattern("leanpkg.toml") or root_pattern(".git") or path.dirname]],
