@@ -1,12 +1,64 @@
 local configs = require 'lspconfig/configs'
 local util = require 'lspconfig/util'
 local handlers = require 'vim.lsp.handlers'
-local path = util.path
 
 local server_name = 'jdtls'
 
+local function get_java_executable()
+  local executable = vim.fn.getenv('JAVA_HOME') ~= vim.NIL
+    and vim.fn.expand('$JAVA_HOME/bin/java')
+    or  'java'
+
+  return vim.fn.has('win32') ~= 0
+    and executable..'.exe'
+    or  executable
+end
+
+local function get_workspace_dir()
+  return vim.fn.getenv('$WORKSPACE') ~= vim.NIL
+    and vim.fn.getenv('WORKSPACE')
+    or  vim.fn.expand('$HOME/workspace')
+end
+
+local function get_jdtls_jar()
+  -- The following case is for legacy cases, should we remove it?
+  if vim.fn.getenv('JAR') ~= vim.NIL then
+    print('Using old $JAR environment variable for JDTLS, refer to documentation and update to JDTLS_HOME')
+    return vim.fn.getenv('JAR')
+  end
+
+  if vim.fn.getenv('JDTLS_HOME') == vim.NIL then
+    error('JDTLS_HOME env variable not set configured')
+  end
+
+  return vim.fn.expand('$JDTLS_HOME/plugins/org.eclipse.equinox.launcher_*.jar')
+end
+
+local function get_jdtls_config()
+  -- The following case is for legacy cases, should we remove it?
+  if vim.fn.getenv('JDTLS_CONFIG') ~= vim.NIL then
+    print('Using old $JDTLS_CONFIG environment variable for JDTLS, refer to documentation and update to JDTLS_HOME')
+    return vim.fn.getenv('JDTLS_CONFIG')
+  end
+
+  if vim.fn.getenv('JDTLS_HOME') == vim.NIL then
+    error('JDTLS_HOME env variable not set configured')
+  end
+
+  if vim.fn.has('unix') ~= 0 then
+    return vim.fn.expand('$JDTLS_HOME/config_linux')
+  elseif vim.fn.has('macunix') ~= 0 then
+    return vim.fn.expand('$JDTLS_HOME/config_mac')
+  elseif vim.fn.has('win32') ~= 0 then
+    return vim.fn.expand('$JDTLS_HOME/config_win')
+  else
+    print('JDTLS Config: unknown filesystem, guessing linux')
+    return vim.fn.expand('$JDTLS_HOME/config_linux')
+  end
+end
+
 local cmd = {
-  util.path.join(tostring(vim.fn.getenv 'JAVA_HOME'), '/bin/java'),
+  get_java_executable(),
   '-Declipse.application=org.eclipse.jdt.ls.core.id1',
   '-Dosgi.bundles.defaultStartLevel=4',
   '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -14,12 +66,9 @@ local cmd = {
   '-Dlog.level=ALL',
   '-Xms1g',
   '-Xmx2G',
-  '-jar',
-  tostring(vim.fn.getenv 'JAR'),
-  '-configuration',
-  tostring(vim.fn.getenv 'JDTLS_CONFIG'),
-  '-data',
-  tostring(vim.fn.getenv 'WORKSPACE'),
+  '-jar', get_jdtls_jar(),
+  '-configuration', get_jdtls_config(),
+  '-data', get_workspace_dir(),
   '--add-modules=ALL-SYSTEM',
   '--add-opens java.base/java.util=ALL-UNNAMED',
   '--add-opens java.base/java.lang=ALL-UNNAMED',
@@ -55,10 +104,6 @@ end
 configs[server_name] = {
   default_config = {
     cmd = cmd,
-    cmd_env = {
-      JAR = vim.fn.getenv 'JAR',
-      GRADLE_HOME = vim.fn.getenv 'GRADLE_HOME',
-    },
     filetypes = { 'java' },
     root_dir = util.root_pattern({
       'build.xml', -- Ant
@@ -68,7 +113,7 @@ configs[server_name] = {
       '.git' -- Other
     }),
     init_options = {
-      workspace = path.join { vim.loop.os_homedir(), 'workspace' },
+      workspace = get_workspace_dir(),
       jvm_args = {},
       os_config = nil,
     },
@@ -117,19 +162,27 @@ Language server for Java.
 
 See project page for installation instructions.
 
-Due to the nature of java, the settings for eclipse jdtls cannot be automatically
-inferred. Please set the following environmental variables to match your installation. You can set these locally for your project with the help of [direnv](https://github.com/direnv/direnv). Note version numbers will change depending on your project's version of java, your version of eclipse, and in the case of JDTLS_CONFIG, your OS.
+Due to the nature of java, the settings for eclipse jdtls cannot be automatically inferred.
+Please set the following environmental variables to match your installation.
+You can set these locally for your project with the help of [direnv](https://github.com/direnv/direnv).
 
 ```bash
-export JAR=/path/to/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.0.v20200915-1508.jar
-export GRADLE_HOME=$HOME/gradle
-export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:/bin/java::")
-export JDTLS_CONFIG=/path/to/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux
-export WORKSPACE=$HOME/workspace
+# Mandatory:
+export JDTLS_HOME=/path/to/jdtls_root # Directory with the plugin and configs directories
+
+# Optional:
+export JAVA_HOME=/path/to/java_home # In case you don't have java in path or want to use a version in particular
+export WORKSPACE=/path/to/workspace # Defaults to $HOME/workspace
 ```
     ]],
     default_config = {
-      root_dir = [[root_pattern(".git")]],
-    },
-  },
+    root_dir = [[util.root_pattern({
+      'build.xml', -- Ant
+      'pom.xml', -- Maven
+      '*.gradle', -- Gradle
+      'makefile', 'Makefile', -- Make
+      '.git' -- Other
+    })]],
+    }
+  }
 }
