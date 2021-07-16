@@ -159,6 +159,5 @@ lspconfig.SERVER.setup{config}
     `function(new_config, new_root_dir)` will be executed after a new configuration has been
     created as a result of {root_dir} returning a unique value. You can use this
     as an opportunity to further modify the new_config or use it before it is
-    sent to |vim.lsp.start_client()|. If you set a custom `on_new_config`, ensure that 
-    `new_config.cmd = cmd` is present within the function body.
+    sent to |vim.lsp.start_client()|.
 ```
