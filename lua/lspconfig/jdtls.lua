@@ -57,28 +57,7 @@ local function get_jdtls_config()
   end
 end
 
-local cmd = {
-  get_java_executable(),
-  '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-  '-Dosgi.bundles.defaultStartLevel=4',
-  '-Declipse.product=org.eclipse.jdt.ls.core.product',
-  '-Dlog.protocol=true',
-  '-Dlog.level=ALL',
-  '-Xms1g',
-  '-Xmx2G',
-  '-jar', get_jdtls_jar(),
-  '-configuration', get_jdtls_config(),
-  '-data', get_workspace_dir(),
-  '--add-modules=ALL-SYSTEM',
-  '--add-opens java.base/java.util=ALL-UNNAMED',
-  '--add-opens java.base/java.lang=ALL-UNNAMED',
-}
-
---- Callback function for the `language/status` notification.
---
--- The server sends a non-standard notification when the status of the language
--- server changes. This can be used to display progress as the server is
--- starting up.
+-- Non-standard notification that can be used to display progress
 local function on_language_status(_, _, result)
   local command = vim.api.nvim_command
   command 'echohl ModeMsg'
@@ -86,8 +65,8 @@ local function on_language_status(_, _, result)
   command 'echohl None'
 end
 
--- If the text document version is 0, set it to nil instead so that Neovim
--- won't refuse to update a buffer that it believes is newer than edits.
+-- TextDocument version is reported as 0, override with nil for
+-- the client don't think the document is newer and updates it
 -- See: https://github.com/eclipse/eclipse.jdt.ls/issues/1695
 local function fix_zero_version(workspace_edit)
   if workspace_edit and workspace_edit.documentChanges then
@@ -103,7 +82,22 @@ end
 
 configs[server_name] = {
   default_config = {
-    cmd = cmd,
+    cmd = {
+      get_java_executable(),
+      '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+      '-Dosgi.bundles.defaultStartLevel=4',
+      '-Declipse.product=org.eclipse.jdt.ls.core.product',
+      '-Dlog.protocol=true',
+      '-Dlog.level=ALL',
+      '-Xms1g',
+      '-Xmx2G',
+      '-jar', get_jdtls_jar(),
+      '-configuration', get_jdtls_config(),
+      '-data', get_workspace_dir(),
+      '--add-modules=ALL-SYSTEM',
+      '--add-opens java.base/java.util=ALL-UNNAMED',
+      '--add-opens java.base/java.lang=ALL-UNNAMED',
+    },
     filetypes = { 'java' },
     root_dir = util.root_pattern({
       'build.xml', -- Ant
@@ -118,23 +112,14 @@ configs[server_name] = {
       os_config = nil,
     },
     handlers = {
-      -- Due to an invalid protocol implementation in the jdtls we have to
-      -- conform these to be spec compliant.
+      -- Due to an invalid protocol implementation in the jdtls we have to conform these to be spec compliant.
       -- https://github.com/eclipse/eclipse.jdt.ls/issues/376
-      -- Command in org.eclipse.lsp5j -> https://github.com/eclipse/lsp4j/blob/master/org.eclipse.lsp4j/src/main/xtend-gen/org/eclipse/lsp4j/Command.java
-      -- CodeAction in org.eclipse.lsp4j -> https://github.com/eclipse/lsp4j/blob/master/org.eclipse.lsp4j/src/main/xtend-gen/org/eclipse/lsp4j/CodeAction.java
-      -- Command in LSP -> https://microsoft.github.io/language-server-protocol/specification#command
-      -- CodeAction in LSP -> https://microsoft.github.io/language-server-protocol/specification#textDocument_codeAction
       ['textDocument/codeAction'] = function(a, b, actions)
         for _, action in ipairs(actions) do
           -- TODO: (steelsojka) Handle more than one edit?
-          -- if command is string, then 'ation' is Command in java format,
-          -- then we add 'edit' property to change to CodeAction in LSP and 'edit' will be executed first
-          if action.command == 'java.apply.workspaceEdit' then
+          if action.command == 'java.apply.workspaceEdit' then -- 'action' is Command in java format
             action.edit = fix_zero_version(action.edit or action.arguments[1])
-            -- if command is table, then 'action' is CodeAction in java format
-            -- then we add 'edit' property to change to CodeAction in LSP and 'edit' will be executed first
-          elseif type(action.command) == 'table' and action.command.command == 'java.apply.workspaceEdit' then
+          elseif type(action.command) == 'table' and action.command.command == 'java.apply.workspaceEdit' then -- 'action' is CodeAction in java format
             action.edit = fix_zero_version(action.edit or action.command.arguments[1])
           end
         end
