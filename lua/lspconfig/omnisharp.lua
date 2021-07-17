@@ -5,7 +5,9 @@ local server_name = 'omnisharp'
 configs[server_name] = {
   default_config = {
     filetypes = { 'cs', 'vb' },
-    root_dir = util.root_pattern('*.csproj', '*.sln'),
+    root_dir = function(fname)
+      return util.root_pattern '*.sln'(fname) or util.root_pattern '*.csproj'(fname)
+    end,
     init_options = {},
   },
   -- on_new_config = function(new_config) end;
@@ -40,7 +42,7 @@ find /path/to/omnisharp-osx | xargs xattr -r -d com.apple.quarantine
 ```
 ]],
     default_config = {
-      root_dir = [[root_pattern(".csproj", ".sln")]],
+      root_dir = [[root_pattern(".sln") or root_pattern(".csproj")]],
     },
   },
 }
