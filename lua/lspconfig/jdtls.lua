@@ -28,7 +28,7 @@ local function get_jdtls_jar()
   end
 
   if vim.fn.getenv('JDTLS_HOME') == vim.NIL then
-    error('JDTLS_HOME env variable not set configured')
+    error('JDTLS_HOME env variable not set')
   end
 
   return vim.fn.expand('$JDTLS_HOME/plugins/org.eclipse.equinox.launcher_*.jar')
@@ -42,7 +42,7 @@ local function get_jdtls_config()
   end
 
   if vim.fn.getenv('JDTLS_HOME') == vim.NIL then
-    error('JDTLS_HOME env variable not set configured')
+    error('JDTLS_HOME env variable not set')
   end
 
   if vim.fn.has('unix') ~= 0 then
@@ -65,8 +65,8 @@ local function on_language_status(_, _, result)
   command 'echohl None'
 end
 
--- TextDocument version is reported as 0, override with nil for
--- the client don't think the document is newer and updates it
+-- TextDocument version is reported as 0, override with nil so that
+-- the client doesn't think the document is newer and refuses to update
 -- See: https://github.com/eclipse/eclipse.jdt.ls/issues/1695
 local function fix_zero_version(workspace_edit)
   if workspace_edit and workspace_edit.documentChanges then
@@ -140,25 +140,41 @@ configs[server_name] = {
   docs = {
     package_json = 'https://raw.githubusercontent.com/redhat-developer/vscode-java/master/package.json',
     description = [[
-
 https://projects.eclipse.org/projects/eclipse.jdt.ls
 
 Language server for Java.
 
-See project page for installation instructions.
+IMPORTANT: If you want all the features jdtls has to offer, [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls)
+is highly recommended. If all you need is diagnostics, completion, imports, gotos and formatting and some code actions
+you can keep reading here.
 
-Due to the nature of java, the settings for eclipse jdtls cannot be automatically inferred.
-Please set the following environmental variables to match your installation.
-You can set these locally for your project with the help of [direnv](https://github.com/direnv/direnv).
+For manual installation you can download precompiled binaries from the
+[official downloads site](http://download.eclipse.org/jdtls/snapshots/?d)
+
+Due to the nature of java settings cannot be inferred, please set the following
+environmental variables to match your installation. If you need per-project configuration
+[direnv](https://github.com/direnv/direnv) is highly recommended.
 
 ```bash
 # Mandatory:
+# .bashrc
 export JDTLS_HOME=/path/to/jdtls_root # Directory with the plugin and configs directories
 
 # Optional:
 export JAVA_HOME=/path/to/java_home # In case you don't have java in path or want to use a version in particular
 export WORKSPACE=/path/to/workspace # Defaults to $HOME/workspace
 ```
+```lua
+  -- init.lua
+  require'lspconfig'.jdtls.setup{}
+```
+
+For automatic instllation you can use the following unofficial installers/launchers under your own risk:
+  - [jdtls-launcher](https://github.com/eruizc-dev/jdtls-launcher) (Includes lombok support by default)
+    ```lua
+      -- init.lua
+      require'lspconfig'.jdtls.setup{ cmd = { 'jdtls' } }
+    ```
     ]],
     default_config = {
     root_dir = [[util.root_pattern({
